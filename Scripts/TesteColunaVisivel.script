@@ -1,0 +1,89 @@
+// Script:    TesteCelulaBase.script
+// Autor:     Lucas Pavanelli
+// Data:      05/mai/2017
+// Propósito: Testar o módulo coluna visível
+
+== Inicializar valores
+=declararparm   lista0  int 0
+=declararparm   lista1  int 1
+=declararparm   lista2  int 2
+
+=declararparm   carta0  int 0
+=declararparm   carta1  int 1
+=declararparm   carta2  int 2
+=declararparm   carta3  int 3
+=declararparm   carta4  int 4
+
+=declararparm   colunavisivel0  int 0
+=declararparm   colunavisivel1  int 1
+=declararparm   colunavisivel2  int 2
+
+=declararparm   AS       int  1
+=declararparm   VALETE   int  11
+=declararparm   DAMA     int  12
+=declararparm   REI      int  13
+
+=declararparm   COPAS    int  0
+=declararparm   OUROS    int  1
+=declararparm   PAUS     int  2
+=declararparm   ESPADAS  int  3
+
+=declararparm   OK                int  0
+=declararparm   ListaVazia        int  1
+=declararparm   FimLista          int  2
+=declararparm   NaoAchou          int  3
+=declararparm   FaltouMemoria     int  4
+=declararparm   InsercaoInvalida  int  5
+
+=declararparm   pNULL          int  0
+=declararparm   pNaoNULL       int  1
+
+== Criar a coluna visivel 0
+=criarcv    colunavisivel0
+
+== Inicializar coluna visível 0 com uma lista vazia
+=criarlista      lista0
+=inicializarcv     lista0   colunavisivel0   ListaVazia
+
+== Remove de uma coluna visivel vazia
+=removercv   colunavisivel0  ListaVazia
+
+== Insere em uma coluna visível vazia
+=criarcarta          carta0  COPAS    AS
+=inserircv    colunavisivel0   carta0    OK
+
+== Inicializar coluna vis?el 1 com uma lista de cartas
+=criarlista          lista1
+=criarcv             colunavisivel1
+=criarcarta          carta1  ESPADAS  REI
+=criarcarta          carta2  PAUS    2
+=inselemapos         lista1   carta0   OK
+=inselemapos         lista1   carta1   OK
+=inselemapos         lista1   carta2   OK
+=inicializarcv       lista1  colunavisivel1  OK
+
+== Verifica as cartas em coluna vis?el 1
+=irinicio        colunavisivel1
+=obtervalorelem  colunavisivel1   carta0   pNaoNULL
+=avancarelem     colunavisivel1   1      OK
+=obtervalorelem  colunavisivel1   carta1   pNaoNULL
+=avancarelem     colunavisivel1   1      OK
+=obtervalorelem  colunavisivel1   carta2   pNaoNULL
+=avancarelem     colunavisivel1   1      FimLista
+
+== Remove uma carta de coluna visivel 1
+=removercv   colunavisivel1  OK
+=obtervalorelem  colunavisivel1   carta1   pNaoNULL
+
+== Insere uma carta na coluna visivel 1
+=criarcarta          carta3  COPAS    DAMA
+=inserircv   colunavisivel1   carta3  OK
+
+== Tenta inserir uma carta inválida na coluna visível 1
+=criarcarta          carta4  OUROS    VALETE
+=inserircv   colunavisivel1   carta4  InsercaoInvalida
+
+== Destrói a coluna visível 1
+=destruircv   colunavisivel1
+
+// fim

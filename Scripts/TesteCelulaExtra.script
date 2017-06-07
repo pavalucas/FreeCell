@@ -1,0 +1,66 @@
+// Script:    TesteBaralho.script
+// Autor:     Handel Scholze Marques
+// Data:      02/abr/2017
+// Propósito: Testar o módulo célula base
+
+== Inicializar valores
+=declararparm   listace0  int 0
+
+=declararparm   carta0    int 0
+=declararparm   carta1    int 1
+=declararparm   carta2    int 2
+=declararparm   carta3    int 3
+=declararparm   carta4    int 4
+
+=declararparm   pos0      int 0
+=declararparm   pos1      int 1
+=declararparm   pos2      int 2
+=declararparm   pos3      int 3
+
+=declararparm   REI       int  13
+=declararparm   AS        int  1
+=declararparm   COPAS     int  0
+=declararparm   OUROS     int  1
+=declararparm   PAUS      int  2
+=declararparm   ESPADAS   int  3
+
+=declararparm   OK             int  0
+=declararparm   ListaVazia     int  1
+=declararparm   FimLista       int  2
+=declararparm   NaoAchou       int  3
+=declararparm   FaltouMemoria  int  4
+=declararparm   ListaCheia     int  5
+
+=declararparm   pNULL          int  0
+=declararparm   pNaoNULL       int  1
+
+
+== Criar lista de células extra e armazenar em listace0
+=criarlistace listace0
+
+== Inserir a carta0 na listace0
+
+=criarcarta      carta0      COPAS     AS
+=inserircartace  listace0    carta0    OK
+
+== Checar se o valor inserido é de fato aquele que deve ser
+=obtervalorelem  listace0    carta0    pNaoNULL
+
+== Inserir mais 4 cartas em listace0
+
+=criarcarta      carta1      OUROS     AS
+=criarcarta      carta2      PAUS      AS
+=criarcarta      carta3      ESPADAS   AS
+=criarcarta      carta4      COPAS     REI 
+=inserircartace  listace0    carta1    OK
+=inserircartace  listace0    carta2    OK
+=inserircartace  listace0    carta3    OK
+=inserircartace  listace0    carta4    ListaCheia
+
+== Remover carta
+=removercartace  listace0    pos0      OK
+
+== Destruir lista
+=destruirlistace listace0    OK
+
+// fim

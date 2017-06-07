@@ -1,0 +1,36 @@
+Data; Horas Trabalhadas; Tipo Tarefa; Descrição da Tarefa Realizada
+
+16/04/2017; 2 horas; estudar; Estudei o arcabouço, entendendo seu funcionamento.
+16/04/2017; 2 horas; especificar os módulos; Comecei a especificar o módulo coluna visível (a.k.a sequência visível)
+
+23/04/2017; 1 hora; especificar os módulos; Terminei a especificação do módulo coluna visível
+23/04/2017; 1 hora; revisar especificações; Revisei a especificação do módulo coluna visível
+
+27/04/2017; 2 horas; codificar módulo; Comecei o desenvolvimento do módulo coluna visível
+
+01/05/2017; 3 horas; codificar módulo; Terminei o desenvolvimento do módulo coluna visível
+
+02/05/2017; 1 hora; codificar módulo; Desenvolvi a função BAR_CriarBaralho do módulo baralho
+
+04/05/2017; 1 hora; redigir script de teste; Comecei a redigir o script e controlador de teste para baralho
+
+05/05/2017; 2 horas; redigir script de teste; Comecei a redigir o script e controlador de teste para coluna visível
+
+07/05/2017; 2 horas; redigir script de teste; Continuei a redigir o script e controlador de teste para coluna visível
+07/05/2017; 1 hora; revisar script de teste; Revisei o script e controlador de teste para coluna visível
+07/05/2017; 1/2 hora; realizar os testes; Executei os testes para coluna visível
+07/05/2017; 1/2 hora; diagnosticar e corrigir os problemas encontrados; Resolvi os problemas encontrados nos testes
+
+08/05/2017; 3 horas; redigir script de teste; Continuei a redigir o script e controlador de teste para coluna visível
+
+09/05/2017; 1 hora; revisar script de teste; Revisei o script e controlador de teste para coluna visível
+09/05/2017; 1/2 hora; realizar os testes; Executei os testes para coluna visível
+09/05/2017; 1 hora; diagnosticar e corrigir os problemas encontrados; Resolvi os problemas encontrados nos testes
+
+10/05/2017; 2 horas; revisar código de modulo; Revisei o código de baralho e coluna visível
+10/05/2017; 2 horas; redigir script de teste; Complementei o script de teste para lista
+10/05/2017; 1/2 hora; realizar os testes; Executei os testes para lista
+
+11/05/2017; 1 hora, revisar script de teste; Revisei o script e controlador de teste para coluna visível
+11/05/2017; 1/4 hora; realizar os testes; Executei os testes para coluna visível
+11/05/2017; 2 horas; diagnosticar e corrigir os problemas encontrados; Resolvi problemas acusados nos testes

@@ -1,0 +1,27 @@
+# Teste do módulo coluna visível usando a biblioteca contendo o arcabouço
+
+[Diretorios]
+
+Nome        =  TesteCB
+PathDefault =  ..\Fontes
+err         =  ..\Produto
+obj         =  ..\Objetos
+c           =  ..\Fontes
+h           =  ..\Fontes
+def         =  ..\Tabelas
+
+[Modulos]
+Lista
+Baralho
+CelulaBase
+TestCB
+
+[BuildInicio]
+/OUT:..\produto\TesteCB.exe
+/INCREMENTAL:NO
+/MACHINE:IX86
+
+[BuildFim]
+ArcaboucoTeste.lib
+
+[Fim]

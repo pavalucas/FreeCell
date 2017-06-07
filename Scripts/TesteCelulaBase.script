@@ -1,0 +1,45 @@
+// Script:    TesteCelulaBase.script
+// Autor:     Miguel Corti
+// Data:      05/mai/2017
+// Propósito: Testar o módulo célula base
+
+== Inicializar valores
+=declararparm   celula0  int 0
+
+=declararparm   carta0  int 0
+=declararparm   carta1  int 1
+=declararparm   carta2  int 2
+
+=declararparm   AS       int  1
+=declararparm   DOIS     int  2
+
+=declararparm   COPAS    int  0
+=declararparm   OUROS    int  1
+=declararparm   PAUS     int  2
+=declararparm   ESPADAS  int  3
+
+=declararparm   OK             int  0
+=declararparm   ListaVazia     int  1
+=declararparm   FimLista       int  2
+=declararparm   NaoAchou       int  3
+=declararparm   FaltouMemoria  int  4
+=declararparm   InsInvalida    int  5
+
+== Criar a celula0
+=criarcelulabase      celula0 
+
+== Inserir primeira carta em célula base
+=criarcarta         carta0     COPAS      AS
+=inserircarta       celula0    carta0     OK
+
+== Inserir carta em célula base
+=criarcarta         carta1     OUROS      DOIS
+=inserircarta       celula0    carta1     OK
+
+== Inserir carta inválida em célula base
+=inserircarta       celula0    carta0     InsInvalida
+
+== Destruir celula base
+=destruircelulabase  celula0
+
+// fim
