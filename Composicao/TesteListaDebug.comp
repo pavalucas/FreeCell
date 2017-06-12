@@ -1,8 +1,8 @@
-# Teste do módulo lista usando a biblioteca contendo o arcabouço
+# Teste do mÃ³dulo lista compilado com debug
 
 [Diretorios]
 
-Nome        =  TesteLista
+Nome        =  TesteListaDebug
 PathDefault =  ..\Fontes
 err         =  ..\Produto
 obj         =  ..\Objetos
@@ -11,11 +11,11 @@ h           =  ..\Fontes
 def         =  ..\Tabelas
 
 [Modulos]
-Lista
-TestLis
+Lista     /D_DEBUG
+TestLis   /D_DEBUG
 
 [BuildInicio]
-/OUT:..\produto\TesteLista.exe
+/OUT:..\produto\TesteListaDebug.exe
 /INCREMENTAL:NO
 /MACHINE:IX86
 

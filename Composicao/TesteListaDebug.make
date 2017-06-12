@@ -1,7 +1,7 @@
 ##################################################
 ###
-### Diretivas de MAKE para o construto: TesteLista
-### Gerado a partir de: TesteLista.comp
+### Diretivas de MAKE para o construto: TesteListaDebug
+### Gerado a partir de: TesteListaDebug.comp
 ###
 ### ----- Arquivo gerado, NÃO EDITE!!! -----
 ###
@@ -9,7 +9,7 @@
 
 ### Nomes globais
 
-NOME            = TesteLista
+NOME            = TesteListaDebug
 
 
 ### Nomes de paths
@@ -63,12 +63,12 @@ limpa :
 $(Fobj)\lista.obj :  {$(Pc)}\lista.c \
     ..\\tabelas\\idtiposespaco.def {$(Ph)}cespdin.h            {$(Ph)}conta.h              \
     {$(Ph)}lista.h              {$(Pdef)}tiposespacoslista.def
-   cl $(O) $(OPT) /Fo$(Fobj)\ $(Fc)\$(@B).c >> $(Ferr)\$(NOME).err
+   cl /D_DEBUG $(O) $(OPT) /Fo$(Fobj)\ $(Fc)\$(@B).c >> $(Ferr)\$(NOME).err
 
 $(Fobj)\testlis.obj :  {$(Pc)}\testlis.c \
     {$(Ph)}generico.h           {$(Ph)}lerparm.h            {$(Ph)}lista.h              \
     {$(Ph)}tst_espc.h          
-   cl $(O) $(OPT) /Fo$(Fobj)\ $(Fc)\$(@B).c >> $(Ferr)\$(NOME).err
+   cl /D_DEBUG $(O) $(OPT) /Fo$(Fobj)\ $(Fc)\$(@B).c >> $(Ferr)\$(NOME).err
 
 
 ### Terminação
@@ -80,7 +80,7 @@ Construto : \
 
 ##################################################
 ###
-### Fim de diretivas MAKE para o construto: TesteLista
+### Fim de diretivas MAKE para o construto: TesteListaDebug
 ###
 ##################################################
 

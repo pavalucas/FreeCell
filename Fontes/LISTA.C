@@ -30,6 +30,12 @@
 #include "LISTA.h"
 #undef LISTA_OWN
 
+#ifdef _DEBUG
+   #include   "Conta.h"
+   #include   "cespdin.h"
+   #include   "..\\tabelas\\IdTiposEspaco.def"
+#endif
+
 /***********************************************************************
 *
 *  $TC Tipo de dados: LIS Elemento da lista
@@ -104,6 +110,10 @@
       {
          return NULL ;
       } /* if */
+
+      #ifdef _DEBUG
+         CED_DefinirTipoEspaco( pLista , LIS_TipoEspacoCabeca ) ;
+      #endif
 
       LimparCabeca( pLista ) ;
 
@@ -529,6 +539,10 @@
          return NULL ;
       } /* if */
 
+      #ifdef _DEBUG
+         CED_DefinirTipoEspaco( pElem , LIS_TipoEspacoNo ) ;
+      #endif
+
       pElem->pValor = pValor ;
       pElem->pAnt   = NULL  ;
       pElem->pProx  = NULL  ;
@@ -557,4 +571,3 @@
    } /* Fim função: LIS  -Limpar a cabeça da lista */
 
 /********** Fim do módulo de implementação: LIS  Lista duplamente encadeada **********/
-
