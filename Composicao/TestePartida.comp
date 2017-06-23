@@ -14,6 +14,7 @@ def         =  ..\Tabelas
 CelulaBase
 CelulaExtra
 ColunaVisivel
+Partida
 
 [BuildInicio]
 /OUT:..\produto\TestePartida.exe

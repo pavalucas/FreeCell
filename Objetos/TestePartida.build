@@ -1,0 +1,6 @@
+/OUT:..\produto\TestePartida.exe
+/INCREMENTAL:NO
+/MACHINE:IX86
+CelulaBase.obj  CelulaExtra.obj  ColunaVisivel.obj  
+ArcaboucoTeste.lib
+
