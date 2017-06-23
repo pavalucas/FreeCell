@@ -1,0 +1,26 @@
+# Teste do módulo lista usando a biblioteca contendo o arcabouço
+
+[Diretorios]
+
+Nome        =  TestePartida
+PathDefault =  ..\Fontes
+err         =  ..\Produto
+obj         =  ..\Objetos
+c           =  ..\Fontes
+h           =  ..\Fontes
+def         =  ..\Tabelas
+
+[Modulos]
+CelulaBase
+CelulaExtra
+ColunaVisivel
+
+[BuildInicio]
+/OUT:..\produto\TestePartida.exe
+/INCREMENTAL:NO
+/MACHINE:IX86
+
+[BuildFim]
+ArcaboucoTeste.lib
+
+[Fim]

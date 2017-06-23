@@ -76,11 +76,12 @@ CB_tpCondRet CB_ExibirCelulaBase( LIS_tppLista celulaBase )
 	LIS_IrInicioLista( celulaBase );
 	if ( LIS_ObterValor( celulaBase ) == NULL) return condRet; // Lista vazia
 
-	do
+	while ( condRet != CB_CondRetFimLista )
 	{
-		BAR_ImprimirCarta( ( BAR_tppCarta ) LIS_ObterValor( celulaBase ) ); // Imprimir carta atual
-		condRet = ( CB_tpCondRet ) LIS_AvancarElementoCorrente( celulaBase, 1 );
-	} while ( condRet != CB_CondRetFimLista ); // Avançar para o próximo elemento até chegar ao final da lista
+		condRet = ( CB_tpCondRet ) LIS_AvancarElementoCorrente( celulaBase, 1 ); 
+	}; // Avançar para o próximo elemento até chegar ao final da lista
+
+	BAR_ImprimirCarta( (BAR_tppCarta) LIS_ObterValor(celulaBase) );
 
 	return condRet;
 } /* Fim função: CB  &Exibir */

@@ -11,3 +11,5 @@ call CompilaCB
 call CompilaCE
 
 call CompilaCV
+
+call CompilaPartida

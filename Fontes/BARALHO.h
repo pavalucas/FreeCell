@@ -138,7 +138,7 @@
 *
 *  $ED Descrição da função
 *     Cria o baralho de 52 cartas ordenado. A ordem utilizada é a
-*     seguinte: primeiro as 13 cartas ordenadas cresecentemente
+*     seguinte: primeiro as 13 cartas ordenadas crescentemente
 *     segundo o requisito 3 do naipe copas, depois o naipe ouros,
 *     em seguida paus e por final espadas.
 *

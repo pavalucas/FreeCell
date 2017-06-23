@@ -31,8 +31,8 @@
 #undef LISTA_OWN
 
 #ifdef _DEBUG
-   #include   "Conta.h"
-   #include   "cespdin.h"
+   #include   "CONTA.H"
+   #include   "CESPDIN.h"
    #include   "..\\tabelas\\IdTiposEspaco.def"
 #endif
 
