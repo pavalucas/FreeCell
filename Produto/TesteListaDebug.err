@@ -8,4 +8,3 @@ Copyright (C) Microsoft Corporation.  All rights reserved.
 /MACHINE:IX86 
 Lista.obj TestLis.obj 
 ArcaboucoTeste.lib 
-

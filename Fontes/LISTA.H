@@ -104,10 +104,10 @@ typedef struct LIS_tagLista * LIS_tppLista ;
 
    typedef enum {
 
-         DeturpaPtAntNulo = 1;
-         DeturpaPtProxNulo = 2;
-         DeturpaPtAntLixo = 3;
-         DeturpaPtProxLixo = 4;
+         DeturpaPtAntNulo = 1,
+         DeturpaPtProxNulo = 2,
+         DeturpaPtAntLixo = 3,
+         DeturpaPtProxLixo = 4
 
    } LIS_tpModosDeturpacao ;
 

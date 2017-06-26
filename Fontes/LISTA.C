@@ -647,11 +647,11 @@
    tpElemLista * CriarElemento( LIS_tppLista pLista ,
                                 void *       pValor  )
    {
+      tpElemLista * pElem ;
+
       #ifdef _DEBUG
          CNT_CONTAR("Criar Elemento");
       #endif
-
-      tpElemLista * pElem ;
 
       pElem = ( tpElemLista * ) malloc( sizeof( tpElemLista )) ;
       if ( pElem == NULL )
