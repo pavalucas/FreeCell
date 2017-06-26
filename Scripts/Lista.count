@@ -29,4 +29,23 @@
     Corrente eh nulo em obter valor
     Ir Inicio Lista
     Ir Final Lista
+    Avancar Elemento Corrente
+    Elemento corrente eh nulo em Avancar Elemento Corrente
+    Numero de elementos para avançar eh positivo
+    Entrou no loop de avançar positivo
+    Avancou ate elemento nulo com avanco positivo
+    Elemento final nao eh nulo no avanco positivo
+    Numero de elementos para avançar eh negativo
+    Entrou no loop de avançar negativo
+    Avancou ate elemento nulo com avanco negativo
+    Elemento final nao eh nulo no avanco negativo
+    Procurar Valor
+    Lista eh vazia em Procurar Valor
+    Entrou no loop de Procurar Valor
+    Achou o valor
+    Liberar Elemento
+    Elemento nao eh nulo em liberar elemento
+    Criar Elemento
+    Alocar elemento recebeu nulo
+    Limpar Cabeca
 	 XPTO nome adicionado para fins de teste\=-2
