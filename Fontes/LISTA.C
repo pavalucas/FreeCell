@@ -173,7 +173,7 @@
       while ( pElem != NULL )
       {
          #ifdef _DEBUG
-            CNT_CONTAR( "Entrou no while de esvaziar" ) ;
+            CNT_CONTAR( "Entrou no loop de esvaziar" ) ;
          #endif
          pProx = pElem->pProx ;
          LiberarElemento( pLista , pElem ) ;
@@ -226,14 +226,14 @@
             if ( pLista->pElemCorr->pAnt != NULL )
             {
                #ifdef _DEBUG
-                  CNT_CONTAR( "Corrente nao é origem em inserir antes" ) ;
+                  CNT_CONTAR( "Encadeou elemento antes" ) ;
                #endif
                pElem->pAnt  = pLista->pElemCorr->pAnt ;
                pLista->pElemCorr->pAnt->pProx = pElem ;
             } else
             {
                #ifdef _DEBUG
-                  CNT_CONTAR( "Corrente é origem em inserir antes" ) ;
+                  CNT_CONTAR( "Corrente eh origem em inserir antes" ) ;
                #endif
                pLista->pOrigemLista = pElem ;
             } /* if */
@@ -290,14 +290,14 @@
             if ( pLista->pElemCorr->pProx != NULL )
             {
                #ifdef _DEBUG
-                  CNT_CONTAR( "Corrente nao é fim em inserir apos" ) ;
+                  CNT_CONTAR( "Encadeou elemento apos" ) ;
                #endif
                pElem->pProx  = pLista->pElemCorr->pProx ;
                pLista->pElemCorr->pProx->pAnt = pElem ;
             } else
             {
                #ifdef _DEBUG
-                  CNT_CONTAR( "Corrente é fim em inserir apos" ) ;
+                  CNT_CONTAR( "Corrente eh fim em inserir apos" ) ;
                #endif
                pLista->pFimLista = pElem ;
             } /* if */
@@ -343,11 +343,14 @@
          if ( pElem->pAnt != NULL )
          {
             #ifdef _DEBUG
-               CNT_CONTAR( "Lista Vazia em excluir elemento" ) ;
+               CNT_CONTAR( "Desencadeou a esquerda em excluir elemento" ) ;
             #endif
             pElem->pAnt->pProx   = pElem->pProx ;
             pLista->pElemCorr    = pElem->pAnt ;
          } else {
+            #ifdef _DEBUG
+               CNT_CONTAR( "Corrente eh origem em excluir elemento" ) ;
+            #endif
             pLista->pElemCorr    = pElem->pProx ;
             pLista->pOrigemLista = pLista->pElemCorr ;
          } /* if */
@@ -356,9 +359,15 @@
 
          if ( pElem->pProx != NULL )
          {
+            #ifdef _DEBUG
+               CNT_CONTAR( "Desencadeou a direita em excluir elemento" ) ;
+            #endif
             pElem->pProx->pAnt = pElem->pAnt ;
          } else
          {
+            #ifdef _DEBUG
+               CNT_CONTAR( "Corrente eh fim em excluir elemento" ) ;
+            #endif
             pLista->pFimLista = pElem->pAnt ;
          } /* if */
 
@@ -377,12 +386,15 @@
    {
 
       #ifdef _DEBUG
+         CNT_CONTAR( "Obter Valor" ) ;
          assert( pLista != NULL ) ;
-         CNT_CONTAR( "LIS_ObterValor" ) ;
       #endif
 
       if ( pLista->pElemCorr == NULL )
       {
+         #ifdef _DEBUG
+            CNT_CONTAR( "Corrente eh nulo em obter valor" ) ;
+         #endif
         return NULL ;
       } /* if */
 
@@ -399,8 +411,8 @@
    {
 
       #ifdef _DEBUG
+         CNT_CONTAR( "Ir Inicio Lista" ) ;
          assert( pLista != NULL ) ;
-         CNT_CONTAR( "LIS_IrInicioLista" ) ;
       #endif
 
       pLista->pElemCorr = pLista->pOrigemLista ;
@@ -416,8 +428,8 @@
    {
 
       #ifdef _DEBUG
+         CNT_CONTAR( "Ir Final Lista" ) ;
          assert( pLista != NULL ) ;
-         CNT_CONTAR( "LIS_IrFinalLista" ) ;
       #endif
 
       pLista->pElemCorr = pLista->pFimLista ;

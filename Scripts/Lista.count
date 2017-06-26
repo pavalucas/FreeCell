@@ -1,0 +1,32 @@
+////////////////////////////////////////////////
+//
+// Conta módulo Lista marcado
+//
+///////////////////////////////////////////////
+    
+    Criar Lista
+    Alocar lista continuou nula
+    Lista Alocada e Criada
+    Destruir Lista
+    Esvaziar Lista
+    Entrou no while de esvaziar
+    Inserir Elemento Antes
+    Elemento Antes Nulo
+    Lista vazia em inserir antes
+    Encadeou elemento antes
+    Corrente é origem em inserir antes
+    Inserir Elemento Apos
+    Elemento Apos Nulo
+    Lista vazia em inserir apos
+    Corrente eh fim em inserir apos
+    Excluir Elemento
+    Lista Vazia em excluir elemento
+    Desencadeou a esquerda em excluir elemento
+    Corrente eh origem em excluir elemento
+    Desencadeou a direita em excluir elemento
+    Corrente eh fim em excluir elemento
+    Obter Valor
+    Corrente eh nulo em obter valor
+    Ir Inicio Lista
+    Ir Final Lista
+	 XPTO nome adicionado para fins de teste\=-2

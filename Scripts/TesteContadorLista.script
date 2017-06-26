@@ -1,0 +1,24 @@
+// Script:    TesteContadorLista.script
+// Autor:     Miguel Corti
+// Data:      02/jun/2017
+// Propósito: Testar contadores do modulo lista
+//
+
+== Inicializar valores
+=declararparm   lista0  int 0
+=declararparm   lista1  int 1
+=declararparm   lista2  int 2
+
+=declararparm   OK             int  0
+=declararparm   ListaVazia     int  1
+=declararparm   FimLista       int  2
+=declararparm   NaoAchou       int  3
+=declararparm   FaltouMemoria  int  4
+
+== Iniciar contagem
+=inicializarcontadores  ""
+=lercontadores          "..\\scripts\\Lista"
+=iniciarcontagem
+
+== Verificar criar lista
+=criarlista lista0
