@@ -11,6 +11,8 @@ h           =  ..\Fontes
 def         =  ..\Tabelas
 
 [Modulos]
+Lista
+Baralho
 CelulaBase
 CelulaExtra
 ColunaVisivel

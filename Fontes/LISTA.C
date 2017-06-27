@@ -686,8 +686,8 @@
 
    void LimparCabeca( LIS_tppLista pLista )
    {
-      #ifndef _DEBUG
-         CNT_CONTAR("Limpar Cabeca")
+      #ifdef _DEBUG
+         CNT_CONTAR("Limpar Cabeca");
       #endif
 
       pLista->pOrigemLista = NULL ;

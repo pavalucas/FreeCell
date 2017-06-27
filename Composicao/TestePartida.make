@@ -33,13 +33,13 @@ Fc                   = ..\Fontes
 ### Macros da plataforma
 
 
-O       = /D_CRT_SECURE_NO_DEPRECATE
-OD      = /Zi /Od /D_CRT_SECURE_NO_DEPRECATE
+O       =
+OD      = /Zi /Od
 L       =
 LD      = /DEBUG /DEBUGTYPE:CV
 
 !IFDEF PRD
-O       = /Ox /D_CRT_SECURE_NO_DEPRECATE
+O       = /Ox
 !ENDIF
 
 OPT     = /c /J /W4 /nologo
@@ -49,8 +49,8 @@ INCLUDE = $(INCLUDE);$(PDEFAULT)
 ### Regras de geração
 
 all : limpa \
-   $(Fobj)\CelulaBase.obj   $(Fobj)\CelulaExtra.obj   $(Fobj)\ColunaVisivel.obj \
-   $(Fobj)\Partida.obj \
+   $(Fobj)\lista.obj   $(Fobj)\baralho.obj   $(Fobj)\celulabase.obj \
+   $(Fobj)\celulaextra.obj   $(Fobj)\colunavisivel.obj   $(Fobj)\partida.obj \
    Construto
 
 ### Limpar arquivos
@@ -61,29 +61,38 @@ limpa :
 
 ### Dependências de módulos objeto a compilar
 
-$(Fobj)\CelulaBase.obj :  {$(Pc)}\CelulaBase.c \
-    {$(Ph)}BARALHO.h            {$(Ph)}CELULABASE.h         {$(PDEFAULT)}LISTA.H             
+$(Fobj)\lista.obj :  {$(Pc)}\lista.c \
+    ..\\tabelas\\idtiposespaco.def {$(Ph)}cespdin.h            {$(Ph)}conta.h              \
+    {$(Ph)}lista.h              {$(Pdef)}tiposespacoslista.def
    cl $(O) $(OPT) /Fo$(Fobj)\ $(Fc)\$(@B).c >> $(Ferr)\$(NOME).err
 
-$(Fobj)\CelulaExtra.obj :  {$(Pc)}\CelulaExtra.c \
-    {$(Ph)}BARALHO.h            {$(Ph)}CELULAEXTRA.h        {$(PDEFAULT)}LISTA.H             
+$(Fobj)\baralho.obj :  {$(Pc)}\baralho.c \
+    {$(Ph)}baralho.h            {$(Ph)}lista.h             
    cl $(O) $(OPT) /Fo$(Fobj)\ $(Fc)\$(@B).c >> $(Ferr)\$(NOME).err
 
-$(Fobj)\ColunaVisivel.obj :  {$(Pc)}\ColunaVisivel.c \
-    {$(Ph)}BARALHO.h            {$(PDEFAULT)}COLUNAVISIVEL.H      {$(PDEFAULT)}LISTA.H             
+$(Fobj)\celulabase.obj :  {$(Pc)}\celulabase.c \
+    {$(Ph)}baralho.h            {$(Ph)}celulabase.h         {$(Ph)}lista.h             
    cl $(O) $(OPT) /Fo$(Fobj)\ $(Fc)\$(@B).c >> $(Ferr)\$(NOME).err
 
-$(Fobj)\Partida.obj :  {$(Pc)}\Partida.c \
-    {$(Ph)}BARALHO.h            {$(Ph)}CELULABASE.h         {$(Ph)}CELULAEXTRA.h        \
-    {$(Ph)}COLUNAVISIVEL.h      {$(PDEFAULT)}LISTA.H             
+$(Fobj)\celulaextra.obj :  {$(Pc)}\celulaextra.c \
+    {$(Ph)}baralho.h            {$(Ph)}celulaextra.h        {$(Ph)}lista.h             
+   cl $(O) $(OPT) /Fo$(Fobj)\ $(Fc)\$(@B).c >> $(Ferr)\$(NOME).err
+
+$(Fobj)\colunavisivel.obj :  {$(Pc)}\colunavisivel.c \
+    {$(Ph)}baralho.h            {$(Ph)}colunavisivel.h      {$(Ph)}lista.h             
+   cl $(O) $(OPT) /Fo$(Fobj)\ $(Fc)\$(@B).c >> $(Ferr)\$(NOME).err
+
+$(Fobj)\partida.obj :  {$(Pc)}\partida.c \
+    {$(Ph)}baralho.h            {$(Ph)}celulabase.h         {$(Ph)}celulaextra.h        \
+    {$(Ph)}colunavisivel.h      {$(Ph)}lista.h             
    cl $(O) $(OPT) /Fo$(Fobj)\ $(Fc)\$(@B).c >> $(Ferr)\$(NOME).err
 
 
 ### Terminação
 
 Construto : \
-   $(Fobj)\CelulaBase.obj   $(Fobj)\CelulaExtra.obj   $(Fobj)\ColunaVisivel.obj \
-   $(Fobj)\Partida.obj
+   $(Fobj)\lista.obj   $(Fobj)\baralho.obj   $(Fobj)\celulabase.obj \
+   $(Fobj)\celulaextra.obj   $(Fobj)\colunavisivel.obj   $(Fobj)\partida.obj
     cd $(Fobj)
     LINK $(L) @$(NOME).build >> $(Ferr)\$(NOME).err
 

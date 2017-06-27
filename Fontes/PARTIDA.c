@@ -48,8 +48,8 @@ void PAR_MenuInicial()
 {
 	printf("Bem Vindo ao Free Cell!\n");
 	printf("Para iniciar um novo jogo, aperte <enter>!\n");
-	scanf("");
-
+	getchar();
+	printf("OK!\n");
 	PAR_InicializarPartida();
 }
 
@@ -156,7 +156,7 @@ int PAR_MenuDeAcoes()
 	printf("1. Exibir o Jogo todo\n");
 	printf("2. Desistir da Partida\n");
 	printf("Digite o numero correspondente para realizar a acao desejada\n");
-	scanf("", &acao);
+	scanf("%d", &acao);
 
 }
 
