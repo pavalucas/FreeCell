@@ -1,6 +1,6 @@
 
 !!! Inicio dos testes
-!!!      Construto sob teste: ..\produto\testelista.exe
+!!!      Construto sob teste: ..\produto\TesteListaDebug.exe
 !!!      Script de teste:     ..\scripts\TesteLista.script
 
 !!!    0  Linha:     1  // Script:    TesteLista.script 
@@ -8,33 +8,34 @@
 !!!    0  Linha:     3  // Data:      02/abr/2008 
 !!!    0  Linha:     4  // Propósito: Testar superficialmente o módulo lista genérica duplamente encadeada 
 !!!    0  Linha:     5  // 
-    7  == Inicializar valores
-   26  == Criar a lista 0
-   29  == Verificar ObterValor relativo a lista vazia
-   32  == Inserir elemento em lista vazia
-   36  == Inserir elemento após primeiro
-   40  == Inserir elemento antes do último
-   44  == Excluir elemento do meio
-   48  == Excluir elemento do início
-   52  == Excluir elemento final, único
-   56  == Ver se a lista ficou vazia
-   59  == Destruir a lista
-   62  == Criar uma lista com dois elementos
-   67  == Esvaziar a lista e ver se ficou vazia
-   71  == Destruir a lista
-   74  == Criar uma lista com quatro elementos
-   81  == Verificar a lista de trás para diante
-   91  == Verificar a lista de frente para trás
-  101  == Verificar a lista andando demais de trás para diante
-  105  == Verificar a lista andando demais de frente para trás
-  109  == Verificar primeiro elemento da lista usando irinicio
-  113  == Verificar último elemento da lista usando irfinal
-  117  == Destruir a lista
-!!!    0  Linha:   120  // fim 
+    7  == Iniciar contadores
+   10  == Inicializar valores
+   29  == Criar a lista 0
+   32  == Verificar ObterValor relativo a lista vazia
+   35  == Inserir elemento em lista vazia
+   39  == Inserir elemento após primeiro
+   43  == Inserir elemento antes do último
+   47  == Excluir elemento do meio
+   51  == Excluir elemento do início
+   55  == Excluir elemento final, único
+   59  == Ver se a lista ficou vazia
+   62  == Destruir a lista
+   65  == Criar uma lista com dois elementos
+   70  == Esvaziar a lista e ver se ficou vazia
+   74  == Destruir a lista
+   77  == Criar uma lista com quatro elementos
+   84  == Verificar a lista de trás para diante
+   94  == Verificar a lista de frente para trás
+  104  == Verificar a lista andando demais de trás para diante
+  108  == Verificar a lista andando demais de frente para trás
+  112  == Verificar primeiro elemento da lista usando irinicio
+  116  == Verificar último elemento da lista usando irfinal
+  120  == Destruir a lista
+!!!    0  Linha:   123  // fim 
 
-!!! Número de linhas lidas:         120
-!!! Número de casos de teste:        22
-!!! Número comandos corretos:        66
+!!! Número de linhas lidas:         123
+!!! Número de casos de teste:        23
+!!! Número comandos corretos:        67
 !!! Número de falhas encontradas:     0
 
 !!! Não foram encontrados problemas
