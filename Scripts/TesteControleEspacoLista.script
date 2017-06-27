@@ -1,0 +1,77 @@
+// Script:    TesteControleEspacoLista.script
+// Autor:     Lucas Pavanelli
+// Data:      04/jun/2017
+// Propósito: Testar controle de memória do módulo lista
+//
+
+== Iniciar contadores
+=inicializarcontadores  "."
+
+== Inicializar valores
+=declararparm   lista0  int 0
+=declararparm   lista1  int 1
+=declararparm   lista2  int 2
+
+=declararparm   str0    string  "abcdefg"
+=declararparm   str1    string  "qwerty"
+=declararparm   str2    string  "xxxxx"
+=declararparm   str3    string  "xpto"
+
+
+=declararparm   OK             int  0
+=declararparm   ListaVazia     int  1
+=declararparm   FimLista       int  2
+=declararparm   NaoAchou       int  3
+=declararparm   FaltouMemoria  int  4
+
+=declararparm   pNULL          int  0
+=declararparm   pNaoNULL       int  1
+
+=declararparm    CriterioExibir int   1
+
+== Verificar espaços alocados
+=verificartodosespacos       CriterioExibir
+=obternumeroespacosalocados  0
+
+== Criar uma lista com três elementos
+=criarlista      lista1 
+=inselemapos     lista1   str0   OK
+=inselemapos     lista1   str1   OK
+=inselemapos     lista1   str2   OK
+
+== Controlar vazamento de memória
+=exibirtodosespacos            CriterioExibir
+=verificartodosespacos         CriterioExibir
+=obternumeroespacosalocados    7
+
+== Destruir a lista
+=destruirlista   lista1
+
+== Controlar vazamento de memória
+=obternumeroespacosalocados  0
+=verificartodosespacos       CriterioExibir
+
+== Limitar o numero de espacos
+=limitarmemoriadisponivel 500
+
+== Criar uma lista com quatro elementos
+=criarlista      lista2 
+=inselemapos     lista2   str0   OK
+=inselemapos     lista2   str1   OK
+=inselemapos     lista2   str2   OK
+=inselemapos     lista2   str3   OK
+
+=obternumerototalespacos 16  	// 7 da lista1 destruida + 9 da lista2
+
+== Elimina o limte de espaco
+=eliminarlimitesespaco
+
+== Destruir a lista
+=destruirlista   lista2
+
+
+== Controlar vazamento de memória
+=obternumeroespacosalocados  0
+=verificartodosespacos       CriterioExibir
+
+// fim
