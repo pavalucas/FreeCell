@@ -10,6 +10,7 @@
 =declararparm   lista2  int 2
 
 =declararparm   str0    string  "abcdefg"
+=declararparm   str1    string  "xxxxx"
 
 =declararparm   pNULL          int  0
 =declararparm   pNaoNULL       int  1
@@ -20,20 +21,76 @@
 =declararparm   NaoAchou       int  3
 =declararparm   FaltouMemoria  int  4
 
+=declararparm   puloNegativo   int  -1
+=declararparm   puloPositivo   int  1
+
 == Iniciar contagem
 =inicializarcontadores  "."
 =lercontadores          "..\\Scripts\\Lista"
 =iniciarcontagem
 
+== Verificar se Inicizalizou todos os contadores
+=numcontadores    44
+
+
 == Verificar criar lista
-=criarlista lista0
+=criarlista       lista0
+=criarlista       lista1
 
-== Inserir elemento em lista vazia
-=inselemantes    lista0   str0   OK
-=obtervalorelem  lista0   str0   pNaoNULL
+== Verificando funcoes quando a lista é vazia
+=obtervalorelem   lista0     "???"           pNULL
+=excluirelem      lista0     ListaVazia
+=avancarelem      lista0     puloPositivo    ListaVazia
 
-== Verificar Contador
-=numcontadores    45
-=contagemcontador   "Criar Lista"  1
+== Verificando arestas de InserirAntes e InserirApos
+=inselemapos      lista0     str0            OK
+=inselemantes     lista0     str0            OK
+=inselemapos      lista0     str0            OK
+=inselemantes     lista0     str1            OK
 
+=inselemantes     lista1     str0            OK
+=inselemapos      lista1     str0            OK
+
+== Verificando Obter valor
+=obtervalorelem   lista0     str1            pNaoNULL
+
+== Verificando avancar elemento
+=irfinal          lista0
+=avancarelem      lista0     2               FimLista
+=avancarelem      lista0     puloNegativo    OK
+=avancarelem      lista0     pNULL           OK
+=avancarelem      lista0     puloPositivo    OK
+
+== Verificando ir pro inicio da lista e avancar pra tras 
+=irinicio         lista0
+=avancarelem      lista0     -2              FimLista
+
+== Verificando ir pro final da lista e excluir, usando origem e fim
+=excluirelem      lista0     OK
+=irfinal          lista0
+=excluirelem      lista0     OK
+
+== Verificando Esvaziar Lista e Destruir Lista
+=esvaziarlista    lista0
+=destruirlista    lista0
+
+== Forçando passar por trechos de erro de alocação
+=limitarmemoriadisponivel 1
+=criarlista       lista0
+=recuperar
+=inselemapos      lista1     str0            FaltouMemoria
+=inselemantes     lista1     str0            FaltouMemoria
+
+
+=eliminarlimitesespaco
+=destruirlista    lista1
+
+== Terminar controlar contadores
 =pararcontagem
+=verificarcontagens    0
+
+== Terminar contagem
+=terminarcontadores
+
+
+// fim

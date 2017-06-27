@@ -207,7 +207,7 @@
          if ( pElem == NULL )
          {
             #ifdef _DEBUG
-               CNT_CONTAR( "Elemento Antes Nulo" ) ;
+               CNT_CONTAR( "Elemento Nulo em inserir antes" ) ;
             #endif
             return LIS_CondRetFaltouMemoria ;
          } /* if */
@@ -271,7 +271,7 @@
          if ( pElem == NULL )
          {
             #ifdef _DEBUG
-               CNT_CONTAR( "Elemento Apos Nulo" ) ;
+               CNT_CONTAR( "Elemento Nulo em inserir apos" ) ;
             #endif
             return LIS_CondRetFaltouMemoria ;
          } /* if */
@@ -397,7 +397,9 @@
          #endif
         return NULL ;
       } /* if */
-
+      #ifdef _DEBUG
+         CNT_CONTAR( "Retornou Valor de corrente em obter valor" ) ;
+      #endif
       return pLista->pElemCorr->pValor ;
 
    } /* Fim função: LIS  &Obter referência para o valor contido no elemento */
@@ -442,7 +444,7 @@
 *  ****/
 
    LIS_tpCondRet LIS_AvancarElementoCorrente( LIS_tppLista pLista ,
-                                              int numElem )
+                                              int numElem ) 
    {
 
       int i ;
@@ -550,6 +552,10 @@
 
       /* Tratar não avançar */
 
+         #ifdef _DEBUG
+            CNT_CONTAR( "Nao houve avanco" ) ;
+         #endif
+
          return LIS_CondRetOK ;
 
    } /* Fim função: LIS  &Avançar elemento */
@@ -567,14 +573,10 @@
 
       #ifdef _DEBUG
          assert( pLista  != NULL ) ;
-         CNT_CONTAR( "Procurar Valor" ) ;
       #endif
 
       if ( pLista->pElemCorr == NULL )
       {
-         #ifdef _DEBUG
-            CNT_CONTAR( "Lista eh vazia em Procurar Valor" ) ;
-         #endif
          return LIS_CondRetListaVazia ;
       } /* if */
 
@@ -582,16 +584,9 @@
             pElem != NULL ;
             pElem  = pElem->pProx )
       {
-         #ifdef _DEBUG
-            CNT_CONTAR( "Entrou no loop de Procurar Valor" ) ;
-         #endif
 
          if ( pElem->pValor == pValor )
          {
-            #ifdef _DEBUG
-               CNT_CONTAR( "Achou o valor" ) ;
-            #endif
-
             pLista->pElemCorr = pElem ;
             return LIS_CondRetOK ;
          } /* if */
@@ -672,6 +667,10 @@
       pElem->pProx  = NULL  ;
 
       pLista->numElem ++ ;
+
+      #ifdef _DEBUG
+         CNT_CONTAR("Elemento Criado com Sucesso");
+      #endif
 
       return pElem ;
 
