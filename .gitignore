@@ -1,3 +1,5 @@
 vsvars32.bat
 /Objetos/*.obj
 /Produto/*
+/Batches/*.count
+/Scripts/estatisticas.estat

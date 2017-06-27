@@ -4,6 +4,9 @@
 // Propósito: Testar superficialmente o módulo lista genérica duplamente encadeada
 //
 
+== Iniciar contadores
+=inicializarcontadores  "."
+
 == Inicializar valores
 =declararparm   lista0  int 0
 =declararparm   lista1  int 1

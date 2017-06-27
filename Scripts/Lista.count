@@ -3,21 +3,21 @@
 // Conta módulo Lista marcado
 //
 ///////////////////////////////////////////////
-    
     Criar Lista
     Alocar lista continuou nula
     Lista Alocada e Criada
     Destruir Lista
     Esvaziar Lista
-    Entrou no while de esvaziar
+    Entrou no loop de esvaziar
     Inserir Elemento Antes
-    Elemento Antes Nulo
+    Elemento Nulo em inserir antes
     Lista vazia em inserir antes
     Encadeou elemento antes
-    Corrente é origem em inserir antes
+    Corrente eh origem em inserir antes
     Inserir Elemento Apos
-    Elemento Apos Nulo
+    Elemento Nulo em inserir apos
     Lista vazia em inserir apos
+    Encadeou elemento apos
     Corrente eh fim em inserir apos
     Excluir Elemento
     Lista Vazia em excluir elemento
@@ -27,6 +27,7 @@
     Corrente eh fim em excluir elemento
     Obter Valor
     Corrente eh nulo em obter valor
+    Retornou Valor de corrente em obter valor
     Ir Inicio Lista
     Ir Final Lista
     Avancar Elemento Corrente
@@ -39,13 +40,10 @@
     Entrou no loop de avançar negativo
     Avancou ate elemento nulo com avanco negativo
     Elemento final nao eh nulo no avanco negativo
-    Procurar Valor
-    Lista eh vazia em Procurar Valor
-    Entrou no loop de Procurar Valor
-    Achou o valor
+    Nao houve avanco
     Liberar Elemento
     Elemento nao eh nulo em liberar elemento
     Criar Elemento
     Alocar elemento recebeu nulo
+    Elemento Criado com Sucesso
     Limpar Cabeca
-	 XPTO nome adicionado para fins de teste\=-2

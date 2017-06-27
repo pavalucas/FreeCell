@@ -27,7 +27,8 @@
 #include    "TST_Espc.h"
 
 #include    "Generico.h"
-#include    "LerParm.h"
+#include    "CESPDIN.h"
+#include    "lerparm.h"
 
 #include    "Lista.h"
 
@@ -43,6 +44,13 @@ static const char EXC_ELEM_CMD            [ ] = "=excluirelem"    ;
 static const char IR_INICIO_CMD           [ ] = "=irinicio"       ;
 static const char IR_FIM_CMD              [ ] = "=irfinal"        ;
 static const char AVANCAR_ELEM_CMD        [ ] = "=avancarelem"    ;
+
+/* os comandos a seguir somente operam em modo _DEBUG */
+
+static const char VER_CABECA_CMD          [ ] = "=verificarcabeca" ;
+static const char VER_LISTA_CMD           [ ] = "=verificarlista" ;
+static const char VER_MEMORIA_CMD         [ ] = "=verificarmemoria" ;
+static const char DETURPAR_CMD            [ ] = "=deturpar" ;
 
 
 #define TRUE  1
@@ -86,6 +94,17 @@ LIS_tppLista   vtListas[ DIM_VT_LISTA ] ;
 *     =irinicio                     inxLista
 *     =irfinal                      inxLista
 *     =avancarelem                  inxLista  numElem CondRetEsp
+* 
+*     Estes comandos somente podem ser executados se o modulo tiver sido
+*     compilado com _DEBUG ligado
+*
+*     =verificarcabeca       <inxLista>
+*
+*     =verificarlista        <inxLista>
+*
+*     =verificarmemoria
+*
+*     =deturpar              <inxLista> < idCodigoDeturpa >
 *
 ***********************************************************************/
 
@@ -366,6 +385,59 @@ LIS_tppLista   vtListas[ DIM_VT_LISTA ] ;
                       "Condicao de retorno errada ao avancar" ) ;
 
          } /* fim ativa: LIS  &Avançar elemento */
+
+       /* Testar verificador de cabeça */
+      #ifdef _DEBUG
+
+         else if ( strcmp( ComandoTeste , VER_CABECA_CMD ) == 0 )
+         {
+
+            numLidos = LER_LerParametros( "i" ,
+                                          &inxLista ) ;
+            if ( ( numLidos != 1 )
+              || !ValidarInxLista( inxLista , NAO_VAZIO ))
+            {
+               return TST_CondRetParm ;
+            } /* if */
+
+            return LIS_VerificarCabeca( vtListas[ inxLista ] ) ;
+
+         } /* fim ativa: Testar verificador de cabeça */
+      #endif
+
+      /* Testar verificador de lista */
+      #ifdef _DEBUG
+
+         else if ( strcmp( ComandoTeste , VER_LISTA_CMD ) == 0 )
+         {
+
+            numLidos = LER_LerParametros( "ii" ,
+                                          &inxLista , &CondRetEsp ) ;
+            if ( ( numLidos != 2 )
+              || !ValidarInxLista( inxLista , NAO_VAZIO ))
+            {
+               return TST_CondRetParm ;
+            } /* if */
+
+            return TST_CompararInt( CondRetEsp ,
+                             LIS_VerificarLista( vtListas[ inxLista ] ) ,
+                             "Retorno incorreto ao verificar lista." ) ;
+
+         } /* fim ativa: Testar verificador de lista */
+      #endif
+
+      /* Verificar vazamento de memória */
+      #ifdef _DEBUG
+
+         else if ( strcmp( ComandoTeste , VER_MEMORIA_CMD ) == 0 )
+         {
+
+            CED_ExibirTodosEspacos( CED_ExibirTodos ) ;
+
+            return TST_CondRetOK ;
+
+         } /* fim ativa: Verificar vazamento de memória */
+      #endif
 
       return TST_CondRetNaoConhec ;
 

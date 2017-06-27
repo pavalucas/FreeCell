@@ -31,6 +31,7 @@
 #undef LISTA_OWN
 
 #ifdef _DEBUG
+   #include   "Generico.h"
    #include   "CONTA.H"
    #include   "CESPDIN.h"
    #include   "..\\tabelas\\IdTiposEspaco.def"
@@ -44,6 +45,18 @@
 ***********************************************************************/
 
    typedef struct tagElemLista {
+
+         #ifdef _DEBUG
+
+         struct LIS_tagLista * pCabeca ;
+               /* Ponteiro para a cabeça da lista
+               *
+               *$ED Descrição
+               *   Todos os nós da lista devem apontar para a respectiva cabeça.
+               *   Esse ponteiro corresponde a um identificador da lista para fins
+               *   de verificação da integridade. */
+
+         #endif
 
          void * pValor ;
                /* Ponteiro para o valor contido no elemento */
@@ -82,6 +95,16 @@
 
    } LIS_tpLista ;
 
+/*****  Dados encapsulados no módulo  *****/
+
+   #ifdef _DEBUG
+
+   static char EspacoLixo[ 256 ] =
+          "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx" ;
+         /* Espaço de dados lixo usado ao testar */
+
+   #endif
+
 /***** Protótipos das funções encapuladas no módulo *****/
 
    static void LiberarElemento( LIS_tppLista   pLista ,
@@ -91,6 +114,12 @@
                                        void *       pValor  ) ;
 
    static void LimparCabeca( LIS_tppLista pLista ) ;
+
+#ifdef _DEBUG
+
+   static LIS_tpCondRet VerificarNo( tpElemLista * pNo ) ;
+
+#endif
 
 /*****  Código das funções exportadas pelo módulo  *****/
 
@@ -207,7 +236,7 @@
          if ( pElem == NULL )
          {
             #ifdef _DEBUG
-               CNT_CONTAR( "Elemento Antes Nulo" ) ;
+               CNT_CONTAR( "Elemento Nulo em inserir antes" ) ;
             #endif
             return LIS_CondRetFaltouMemoria ;
          } /* if */
@@ -271,7 +300,7 @@
          if ( pElem == NULL )
          {
             #ifdef _DEBUG
-               CNT_CONTAR( "Elemento Apos Nulo" ) ;
+               CNT_CONTAR( "Elemento Nulo em inserir apos" ) ;
             #endif
             return LIS_CondRetFaltouMemoria ;
          } /* if */
@@ -397,7 +426,9 @@
          #endif
         return NULL ;
       } /* if */
-
+      #ifdef _DEBUG
+         CNT_CONTAR( "Retornou Valor de corrente em obter valor" ) ;
+      #endif
       return pLista->pElemCorr->pValor ;
 
    } /* Fim função: LIS  &Obter referência para o valor contido no elemento */
@@ -442,7 +473,7 @@
 *  ****/
 
    LIS_tpCondRet LIS_AvancarElementoCorrente( LIS_tppLista pLista ,
-                                              int numElem )
+                                              int numElem ) 
    {
 
       int i ;
@@ -550,6 +581,10 @@
 
       /* Tratar não avançar */
 
+         #ifdef _DEBUG
+            CNT_CONTAR( "Nao houve avanco" ) ;
+         #endif
+
          return LIS_CondRetOK ;
 
    } /* Fim função: LIS  &Avançar elemento */
@@ -567,14 +602,10 @@
 
       #ifdef _DEBUG
          assert( pLista  != NULL ) ;
-         CNT_CONTAR( "Procurar Valor" ) ;
       #endif
 
       if ( pLista->pElemCorr == NULL )
       {
-         #ifdef _DEBUG
-            CNT_CONTAR( "Lista eh vazia em Procurar Valor" ) ;
-         #endif
          return LIS_CondRetListaVazia ;
       } /* if */
 
@@ -582,16 +613,9 @@
             pElem != NULL ;
             pElem  = pElem->pProx )
       {
-         #ifdef _DEBUG
-            CNT_CONTAR( "Entrou no loop de Procurar Valor" ) ;
-         #endif
 
          if ( pElem->pValor == pValor )
          {
-            #ifdef _DEBUG
-               CNT_CONTAR( "Achou o valor" ) ;
-            #endif
-
             pLista->pElemCorr = pElem ;
             return LIS_CondRetOK ;
          } /* if */
@@ -600,6 +624,201 @@
       return LIS_CondRetNaoAchou ;
 
    } /* Fim função: LIS  &Procurar elemento contendo valor */
+
+
+#ifdef _DEBUG
+
+/***************************************************************************
+*
+*  Função: LIS  &Verificar uma lista
+*  ****/
+
+   LIS_tpCondRet LIS_VerificarLista( void * pListaParm )
+   {
+
+      LIS_tpLista * pLista = NULL ;
+
+      if ( LIS_VerificarCabeca( pListaParm ) != LIS_CondRetOK )
+      {
+         return LIS_CondRetErroEstrutura ;
+      } /* if */
+
+      CED_MarcarEspacoAtivo( pListaParm ) ;
+
+      pLista = ( LIS_tpLista * ) ( pListaParm ) ;
+
+      return VerificarNo( pLista->pOrigemLista ) ;
+
+   } /* Fim função: LIS  &Verificar uma lista */
+
+#endif 
+
+#ifdef _DEBUG
+
+/***************************************************************************
+*
+*  Função: LIS  &Verificar um nó cabeça
+*  ****/
+
+   LIS_tpCondRet LIS_VerificarCabeca( void * pCabecaParm )
+   {
+
+      LIS_tpLista * pLista = NULL ;
+
+      /* Verifica o tipo do espaço */
+
+         if ( pCabecaParm == NULL )
+         {
+            TST_NotificarFalha( "Tentou verificar cabeça inexistente." ) ;
+            return LIS_CondRetErroEstrutura ;
+         } /* if */
+
+         if ( ! CED_VerificarEspaco( pCabecaParm , NULL ))
+         {
+            TST_NotificarFalha( "Controle do espaço acusou erro." ) ;
+            return LIS_CondRetErroEstrutura ;
+         } /* if */
+
+         if ( TST_CompararInt( LIS_TipoEspacoCabeca ,
+              CED_ObterTipoEspaco( pCabecaParm ) ,
+              "Tipo do espaço de dados não é cabeça de lista." ) != TST_CondRetOK )
+         {
+            return LIS_CondRetErroEstrutura ;
+         } /* if */
+
+         pLista = ( LIS_tpLista * )( pCabecaParm ) ;
+
+      /* Verifica origem da lista */
+
+         if ( pLista->pOrigemLista != NULL )
+         {
+            if ( TST_CompararPonteiro( pCabecaParm , pLista->pOrigemLista->pCabeca ,
+                 "Nó raiz não aponta para cabeça." ) != TST_CondRetOK )
+            {
+               return LIS_CondRetErroEstrutura ;
+            } /* if */
+         } else {
+            if ( TST_CompararPonteiro( NULL , pLista->pElemCorr ,
+                 "Lista vazia tem nó corrente não NULL." ) != TST_CondRetOK )
+            {
+               return LIS_CondRetErroEstrutura ;
+            } /* if */
+         } /* if */
+
+      /* Verifica corrente */
+
+         if ( pLista->pElemCorr != NULL )
+         {
+            if ( TST_CompararPonteiro( pCabecaParm , pLista->pElemCorr->pCabeca ,
+                 "Nó corrente não aponta para cabeça." ) != TST_CondRetOK )
+            {
+               return LIS_CondRetErroEstrutura ;
+            } /* if */
+         } else {
+            if ( TST_CompararPonteiro( NULL , pLista->pOrigemLista ,
+                 "Lista não vazia tem nó corrente NULL." ) != TST_CondRetOK )
+            {
+               return LIS_CondRetErroEstrutura ;
+            } /* if */
+         } /* if */
+
+      return LIS_CondRetOK ;
+
+   } /* Fim função: LIS  &Verificar um nó cabeça */
+
+#endif
+
+#ifdef _DEBUG
+
+/***************************************************************************
+*
+*  Função: LIS  &Verificar um nó de estrutura
+*  ****/
+
+   LIS_tpCondRet LIS_VerificarNo( void * pNoParm )
+   {
+
+      tpElemLista * pNo     = NULL ;
+      LIS_tpLista   * pLista = NULL ;
+
+      /* Verificar se é nó estrutural */
+
+         if ( pNoParm == NULL )
+         {
+            TST_NotificarFalha( "Tentou verificar nó inexistente." ) ;
+            return LIS_CondRetErroEstrutura ;
+
+         } /* if */
+
+         if ( ! CED_VerificarEspaco( pNoParm , NULL ))
+         {
+            TST_NotificarFalha( "Controle do espaço acusou erro." ) ;
+            return LIS_CondRetErroEstrutura ;
+         } /* if */
+
+         if ( TST_CompararInt( LIS_TipoEspacoNo ,
+              CED_ObterTipoEspaco( pNoParm ) ,
+              "Tipo do espaço de dados não é nó de lista." ) != TST_CondRetOK )
+         {
+            return LIS_CondRetErroEstrutura ;
+         } /* if */
+
+         pNo     = ( tpElemLista * )( pNoParm ) ;
+         pLista = pNo->pCabeca ;
+
+      /* Verificar cabeça */
+
+         if ( pLista->pOrigemLista != NULL  )
+         {
+            if ( TST_CompararPonteiro( pLista , pLista->pOrigemLista->pCabeca ,
+                 "Nó não pertence à lista." ) != TST_CondRetOK )
+            {
+               return LIS_CondRetErroEstrutura ;
+            } /* if */
+         } else
+         {
+            return TST_NotificarFalha( "Nó pertence a lista vazia." ) ;
+         } /* if */
+
+      /* Verificar antecessor */
+
+         if ( pNo->pAnt != NULL )
+         {
+            if (pNo->pAnt->pProx != pNo )
+            {
+               return LIS_CondRetErroEstrutura ;
+            } /* if */
+         } else
+         {
+            if ( TST_CompararPonteiro( pNo , pLista->pOrigemLista ,
+                 "Primeiro nó da lista não é apontado por pOrigemLista." ) != TST_CondRetOK )
+            {
+               return LIS_CondRetErroEstrutura ;
+            } /* if */
+         } /* if */
+
+      /* Verificar sucessor */
+
+         if ( pNo->pProx != NULL )
+         {
+            if ( pNo->pProx->pAnt != pNo )
+            {
+               return LIS_CondRetErroEstrutura ;
+            } /* if */
+         } else
+         {
+            if ( TST_CompararPonteiro( pNo , pLista->pFimLista ,
+                 "Último nó da lista não é apontado por pFimLista." ) != TST_CondRetOK )
+            {
+               return LIS_CondRetErroEstrutura ;
+            } /* if */
+         } /* if */
+
+      return LIS_CondRetOK ;
+
+   } /* Fim função: LIS  &Verificar um nó de estrutura */
+
+#endif
 
 
 /*****  Código das funções encapsuladas no módulo  *****/
@@ -665,6 +884,9 @@
 
       #ifdef _DEBUG
          CED_DefinirTipoEspaco( pElem , LIS_TipoEspacoNo ) ;
+         pElem->pCabeca = pLista ;
+      #else
+         pLista = NULL ;
       #endif
 
       pElem->pValor = pValor ;
@@ -672,6 +894,10 @@
       pElem->pProx  = NULL  ;
 
       pLista->numElem ++ ;
+
+      #ifdef _DEBUG
+         CNT_CONTAR("Elemento Criado com Sucesso");
+      #endif
 
       return pElem ;
 
@@ -697,10 +923,15 @@
 
    } /* Fim função: LIS  -Limpar a cabeça da lista */
 
+<<<<<<< HEAD
+=======
+#ifdef _DEBUG
+>>>>>>> 0d8d38075b3d9113513bc46b669ddeb5968eeaa8
 
 
 /***********************************************************************
 *
+<<<<<<< HEAD
 *  $FC Função: LIS  - Obter Tamanho Lista
 *
 ***********************************************************************/
@@ -710,5 +941,41 @@ int LIS_obterTamanhoLista( LIS_tppLista pLista )
 {
    return pLista->numElem;
 } /* Fim função: LIS  - Obter Tamanho Lista */
+=======
+*  $FC Função: LIS  -Explorar verificando os nós de uma lista
+*
+*  $ED Descrição da função
+*     Percorre recursivamente a lista verificando os nós à medida que forem
+*     visitados. Caso seja encontrado alguma falha, a verificação será
+*     suspensa. Portanto, no caso de falha, é possível que nem todos
+*     os nós da lista sejam visitados.
+*
+***********************************************************************/
+
+   LIS_tpCondRet VerificarNo( tpElemLista * pNo )
+   {
+
+      LIS_tpCondRet CondErro = LIS_CondRetOK ;
+
+      if ( pNo == NULL )
+      {
+         return LIS_CondRetOK ;
+      } /* if */
+
+      CED_MarcarEspacoAtivo( pNo ) ;
+
+      CondErro = LIS_VerificarNo( pNo ) ;
+
+      if ( CondErro == LIS_CondRetOK )
+      {
+         CondErro = VerificarNo( pNo->pProx ) ;
+      } /* if */
+
+      return CondErro ;
+
+   } /* Fim função: LIS  -Explorar verificando os nós de uma lista */
+
+#endif
+>>>>>>> 0d8d38075b3d9113513bc46b669ddeb5968eeaa8
 
 /********** Fim do módulo de implementação: LIS  Lista duplamente encadeada **********/
