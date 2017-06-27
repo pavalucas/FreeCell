@@ -91,6 +91,9 @@ typedef struct LIS_tagLista * LIS_tppLista ;
          LIS_CondRetFaltouMemoria ,
                /* Faltou memória ao tentar criar um elemento de lista */
 
+         LIS_CondRetErroEstrutura
+               /* Estrutura da lista está errada */
+
    } LIS_tpCondRet ;
 
 /***********************************************************************
@@ -356,6 +359,70 @@ typedef struct LIS_tagLista * LIS_tppLista ;
 
    LIS_tpCondRet LIS_ProcurarValor( LIS_tppLista pLista ,
                                     void * pValor        ) ;
+
+   /***********************************************************************
+*
+*  $FC Função: LIS  &Verificar uma lista
+*
+*  $ED Descrição da função
+*     Função da interface de teste.
+*     Verifica completamente uma determinada lista.
+*     Também marca todos os espaços por ela ocupados.
+*
+***********************************************************************/
+
+#ifdef _DEBUG
+
+   LIS_tpCondRet LIS_VerificarLista( void * pArvoreParm ) ;
+
+#endif
+
+
+/***********************************************************************
+*
+*  $FC Função: LIS  &Verificar um nó cabeça
+*
+*  $ED Descrição da função
+*     Função da interface de teste.
+*     Verifica a integridade de um nó cabeça da lista.
+*
+*  $EP Parâmetros
+*     $P pCabecaParm - ponteiro para um espaço que deveria ser uma cabeça
+*                      de lista.
+*
+*  $FV Valor retornado
+*     Condição de retorno de teste
+*
+***********************************************************************/
+
+#ifdef _DEBUG
+
+   LIS_tpCondRet LIS_VerificarCabeca( void * pCabecaParm ) ;
+
+#endif
+
+
+/***********************************************************************
+*
+*  $FC Função: LIS  &Verificar um nó de estrutura
+*
+*  $ED Descrição da função
+*     Função da interface de teste.
+*     Verifica a integridade de um nó estrutural da lista.
+*
+*  $EP Parâmetros
+*     $P pNoParm - ponteiro para espaço que deveria ser um nó estrutural.
+*
+*  $FV Valor retornado
+*     Número de erros encontrados.
+*
+***********************************************************************/
+
+#ifdef _DEBUG
+
+   LIS_tpCondRet LIS_VerificarNo( void * pNoParm ) ;
+
+#endif
 
 #undef LISTA_EXT
 

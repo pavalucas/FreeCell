@@ -61,7 +61,8 @@ limpa :
 ### Dependências de módulos objeto a compilar
 
 $(Fobj)\lista.obj :  {$(Pc)}\lista.c \
-    {$(Ph)}lista.h             
+    ..\\tabelas\\idtiposespaco.def {$(Ph)}cespdin.h            {$(Ph)}conta.h              \
+    {$(Ph)}lista.h              {$(Pdef)}tiposespacoslista.def
    cl $(O) $(OPT) /Fo$(Fobj)\ $(Fc)\$(@B).c >> $(Ferr)\$(NOME).err
 
 $(Fobj)\baralho.obj :  {$(Pc)}\baralho.c \

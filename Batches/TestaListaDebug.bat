@@ -10,4 +10,6 @@ if errorlevel 4 goto sai
 ..\produto\TesteListaDebug.exe   /s..\scripts\TesteContadorLista           /l..\produto\TesteContadorLista            /a..\scripts\estatisticas
 if errorlevel 4 goto sai
 
-:sai
+..\produto\TesteListaDebug.exe   /s..\scripts\TesteControleEspacoLista     /l..\produto\TesteControleEspacoLista      /a..\scripts\estatisticas
+if errorlevel 4 goto sai
+

@@ -1,6 +1,6 @@
 
 !!! Inicio dos testes
-!!!      Construto sob teste: ..\produto\testelista.exe
+!!!      Construto sob teste: ..\produto\testelistadebug.exe
 !!!      Script de teste:     ..\scripts\TesteContadorLista.script
 
 !!!    0  Linha:     1  // Script:    TesteContadorLista.script 
@@ -25,4 +25,4 @@
 !!! Foram encontrados problemas
 
 
-!!! Numero de espacos ainda alocados: 0
+!!! Numero de espacos ainda alocados: 2
