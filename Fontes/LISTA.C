@@ -697,4 +697,18 @@
 
    } /* Fim função: LIS  -Limpar a cabeça da lista */
 
+
+
+/***********************************************************************
+*
+*  $FC Função: LIS  - Obter Tamanho Lista
+*
+***********************************************************************/
+
+
+int LIS_obterTamanhoLista( LIS_tppLista pLista )
+{
+   return pLista->numElem;
+} /* Fim função: LIS  - Obter Tamanho Lista */
+
 /********** Fim do módulo de implementação: LIS  Lista duplamente encadeada **********/

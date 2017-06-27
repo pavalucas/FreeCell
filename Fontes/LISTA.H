@@ -357,6 +357,28 @@ typedef struct LIS_tagLista * LIS_tppLista ;
    LIS_tpCondRet LIS_ProcurarValor( LIS_tppLista pLista ,
                                     void * pValor        ) ;
 
+
+
+
+/***********************************************************************
+*
+*  $FC Função: LIS  &Obter tamanho da lista
+*
+*  $ED Descrição da função
+*     Retorna o tamanho da lista dada.
+*
+*  $EP Parâmetros
+*     pLista  - ponteiro para a lista
+*
+*  $FV Valor retornado
+*     
+*   Retorna o tamanho da lista, 0 caso a lista está vazia.
+*
+*
+***********************************************************************/
+
+    int LIS_obterTamanhoLista( LIS_tppLista pLista );
+
 #undef LISTA_EXT
 
 /********** Fim do módulo de definição: LIS  Lista duplamente encadeada **********/
