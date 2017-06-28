@@ -358,9 +358,6 @@ typedef struct LIS_tagLista * LIS_tppLista ;
    LIS_tpCondRet LIS_ProcurarValor( LIS_tppLista pLista ,
                                     void * pValor        ) ;
 
-<<<<<<< HEAD
-
-=======
    /***********************************************************************
 *
 *  $FC Função: LIS  &Verificar uma lista
@@ -377,28 +374,9 @@ typedef struct LIS_tagLista * LIS_tppLista ;
    LIS_tpCondRet LIS_VerificarLista( void * pListaParm ) ;
 
 #endif
->>>>>>> 0d8d38075b3d9113513bc46b669ddeb5968eeaa8
 
 
 /***********************************************************************
-*
-<<<<<<< HEAD
-*  $FC Função: LIS  &Obter tamanho da lista
-*
-*  $ED Descrição da função
-*     Retorna o tamanho da lista dada.
-*
-*  $EP Parâmetros
-*     pLista  - ponteiro para a lista
-*
-*  $FV Valor retornado
-*     
-*   Retorna o tamanho da lista, 0 caso a lista está vazia.
-*
-*
-***********************************************************************/
-
-    int LIS_obterTamanhoLista( LIS_tppLista pLista );
 =======
 *  $FC Função: LIS  &Verificar um nó cabeça
 *
@@ -443,7 +421,6 @@ typedef struct LIS_tagLista * LIS_tppLista ;
    LIS_tpCondRet LIS_VerificarNo( void * pNoParm ) ;
 
 #endif
->>>>>>> 0d8d38075b3d9113513bc46b669ddeb5968eeaa8
 
 /***********************************************************************
 *
