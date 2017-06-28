@@ -57,11 +57,22 @@ PARA AVALIAR OS MÓDULOS:
 7. Para rodar os testes de debug:
 	7.1 Os testes de contadores -> TestaListaDebug.bat
 	7.2 Os testes de controle de espaços -> TestaListaDebug.bat
+	7.3 Os testes de deturpações -> TestaListaDebug.bat
+
+8. Os nomes dos executáveis:
+	TesteBaralho.exe 	-> TRAB4-1.EXE
+	TesteCB.exe 	 	-> TRAB4-2.EXE
+	TesteCE.exe 	 	-> TRAB4-3.EXE
+	TesteCV.exe 	 	-> TRAB4-4.EXE
+	TesteLista.exe   	-> TRAB4-5.EXE
+	TesteListaDebug.exe -> TRAB4-6.EXE
+	TestePartida.exe 	-> TRAB4-7.EXE
+
 
 
 PARA COMPILAR E RODAR O JOGO:
 1. Executar: CompilaPartida.bat
-2. Ir na pasta produto e executar o exe: TestePartida.exe
+2. Ir na pasta Produto e executar o exe: TestePartida.exe
 
 PARA JOGAR O JOGO:
 
