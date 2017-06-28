@@ -289,13 +289,14 @@
 
       tpElemLista * pElem ;
 
+
+
       #ifdef _DEBUG
          CNT_CONTAR( "Inserir Elemento Apos" ) ;
          assert( pLista != NULL ) ;
       #endif
 
       /* Criar elemento a inserir após */
-
          pElem = CriarElemento( pLista , pValor ) ;
          if ( pElem == NULL )
          {
@@ -963,8 +964,6 @@
       #ifdef _DEBUG
          CED_DefinirTipoEspaco( pElem , LIS_TipoEspacoNo ) ;
          pElem->pCabeca = pLista ;
-      #else
-         pLista = NULL ;
       #endif
 
       pElem->pValor = pValor ;
