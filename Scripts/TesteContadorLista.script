@@ -75,12 +75,10 @@
 =destruirlista    lista0
 
 == Forçando passar por trechos de erro de alocação
-=limitarmemoriadisponivel 1
+=limitarnumeroespacos 7
 =criarlista       lista0
-=recuperar
 =inselemapos      lista1     str0            FaltouMemoria
 =inselemantes     lista1     str0            FaltouMemoria
-
 
 =eliminarlimitesespaco
 =destruirlista    lista1

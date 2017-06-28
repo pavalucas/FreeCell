@@ -231,8 +231,8 @@
       #endif
 
       /* Criar elemento a inserir antes */
-
          pElem = CriarElemento( pLista , pValor ) ;
+
          if ( pElem == NULL )
          {
             #ifdef _DEBUG
