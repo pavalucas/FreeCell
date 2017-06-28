@@ -94,7 +94,6 @@ CV_tpCondRet CV_InserirCarta(LIS_tppLista colunaVisivel, BAR_tppCarta carta)
 	cartaTopo = (BAR_tppCarta)LIS_ObterValor(colunaVisivel);
 	if (ValidarInsercao(carta))
 	{
-		printf("entrei inserir\n");
 		retorno = (CV_tpCondRet)LIS_InserirElementoApos(colunaVisivel, carta);
 	}
 	else
