@@ -151,17 +151,20 @@ void PAR_Partida(LIS_tppLista listaDeListas)
 	LIS_tppLista colunaIniEscolhida;
 	LIS_tppLista colunaFimEscolhida;
 	BAR_tppCarta cartaIniEscolhida;
+	BAR_tppCarta cartaAlocada;
 
 	char ini[100];
 	char fim[100];
 	int num1;
 	int num2;
 	int acao;
+	int numero;
+	int naipe;
 
 	printf("****** Menu de Acoes ******\n");
 	printf("1. Exibir o Jogo todo\n");
-	printf("2. Desistir da Partida\n");
-	printf("3. Movimentar cartas\n");
+	printf("2. Movimentar cartas\n");
+	printf("5. Desistir da Partida\n");
 	printf("Digite o numero correspondente para realizar a acao desejada\n");
 	scanf("%d", &acao);
 
@@ -169,11 +172,11 @@ void PAR_Partida(LIS_tppLista listaDeListas)
 	{
 		PAR_ImprimirPartida(listaDeListas);
 	}
-	else if(acao == 2)
+	else if(acao == 5)
 	{
 		exit(1);
 	}
-	else if(acao == 3)
+	else if(acao == 2)
 	{
 
 		scanf("%s %d %s %d", ini, &num1, fim, &num2);
@@ -181,21 +184,32 @@ void PAR_Partida(LIS_tppLista listaDeListas)
 		LIS_IrInicioLista(listaDeListas);
 
 		if(strcmp(ini, "cv") == 0 && num1<9)
-		{
+		{			
 			LIS_AvancarElementoCorrente(listaDeListas, num1-1);
 			colunaIniEscolhida = LIS_ObterValor(listaDeListas);
 			LIS_IrFinalLista(colunaIniEscolhida);
 			cartaIniEscolhida = LIS_ObterValor(colunaIniEscolhida);
 
+			naipe = BAR_ObterNaipe( cartaIniEscolhida );
+			numero = BAR_ObterNumero( cartaIniEscolhida );
+			cartaAlocada = BAR_CriarCarta(naipe, numero);
+		
 			if(strcmp(fim, "cv") == 0 && num2<9)
 			{
+				
+
 				LIS_IrInicioLista(listaDeListas);
 				LIS_AvancarElementoCorrente(listaDeListas, num2-1);
 				colunaFimEscolhida = LIS_ObterValor(listaDeListas);
-				if(CV_InserirCarta(colunaFimEscolhida, cartaIniEscolhida)==CV_CondRetOK)
+				
+				if(CV_InserirCarta(colunaFimEscolhida, cartaAlocada)==CV_CondRetOK)
 				{
 					CV_RemoverCarta(colunaIniEscolhida);
-					printf("Troca de coluna feita com sucesso!\n");
+					printf("\nTroca de coluna feita com sucesso!\n\n");
+				}
+				else
+				{
+					BAR_LiberarCarta(cartaAlocada);
 				}
 			}
 
@@ -203,9 +217,14 @@ void PAR_Partida(LIS_tppLista listaDeListas)
 			{
 				LIS_IrFinalLista(listaDeListas);
 				colunaFimEscolhida = LIS_ObterValor(listaDeListas);
-				if(CE_InserirCarta(colunaFimEscolhida, cartaIniEscolhida) == CE_CondRetOK)
+				if(CE_InserirCarta(colunaFimEscolhida, cartaAlocada) == CE_CondRetOK)
 				{
-					printf("Carta colocada em Celula Extra com sucesso!\n");
+					CV_RemoverCarta(colunaIniEscolhida);
+					printf("\nCarta colocada em Celula Extra com sucesso!\n\n");
+				}
+				else
+				{
+					BAR_LiberarCarta(cartaAlocada);
 				}
 			}
 			else if(strcmp(fim, "cb")==0 && num2<5)
@@ -213,9 +232,14 @@ void PAR_Partida(LIS_tppLista listaDeListas)
 				LIS_IrInicioLista(listaDeListas);
 				LIS_AvancarElementoCorrente(listaDeListas, 7+num2);
 				colunaFimEscolhida = LIS_ObterValor(listaDeListas);
-				if(CB_InserirCarta(colunaFimEscolhida, cartaIniEscolhida) == CB_CondRetOK)
+				if(CB_InserirCarta(colunaFimEscolhida, cartaAlocada) == CB_CondRetOK)
 				{
-					printf("Carta inserida na Célula Base com sucesso!\n");
+					CV_RemoverCarta(colunaIniEscolhida);
+					printf("\nCarta inserida na Célula Base com sucesso!\n\n");
+				}
+				else
+				{
+					BAR_LiberarCarta(cartaAlocada);
 				}
 			}
 		}
@@ -227,16 +251,24 @@ void PAR_Partida(LIS_tppLista listaDeListas)
 			LIS_AvancarElementoCorrente(colunaIniEscolhida, num1-1);
 			cartaIniEscolhida = LIS_ObterValor(colunaIniEscolhida);
 
+			naipe = BAR_ObterNaipe( cartaIniEscolhida );
+			numero = BAR_ObterNumero( cartaIniEscolhida );
+			cartaAlocada = BAR_CriarCarta(naipe, numero);
+
 			if(strcmp(fim, "cv") == 0 && num2<9)
 			{
 				LIS_IrInicioLista(listaDeListas);
 				LIS_AvancarElementoCorrente(listaDeListas, num2-1);
 				colunaFimEscolhida = LIS_ObterValor(listaDeListas);
 
-				if(CV_InserirCarta(colunaFimEscolhida, cartaIniEscolhida)==CV_CondRetOK)
+				if(CV_InserirCarta(colunaFimEscolhida, cartaAlocada)==CV_CondRetOK)
 				{
 					CV_RemoverCarta(colunaIniEscolhida);
-					printf("Carta colocada na coluna com sucesso!\n");
+					printf("\nCarta colocada na coluna com sucesso!\n\n");
+				}
+				else
+				{
+					BAR_LiberarCarta(cartaAlocada);
 				}
 			}
 			else if(strcmp(fim, "cb") == 0  && num2 < 5)
@@ -245,10 +277,14 @@ void PAR_Partida(LIS_tppLista listaDeListas)
 				LIS_IrInicioLista(listaDeListas);
 				LIS_AvancarElementoCorrente(listaDeListas, 7+num2);
 				colunaFimEscolhida = LIS_ObterValor(listaDeListas);
-				if(CB_InserirCarta(colunaFimEscolhida, cartaIniEscolhida) == CB_CondRetOK)
+				if(CB_InserirCarta(colunaFimEscolhida, cartaAlocada) == CB_CondRetOK)
 				{
-					CE_RemoverCarta(cartaIniEscolhida, cartaIniEscolhida);
-					printf("Carta inserida na Célula Base com sucesso!\n");
+					CE_RemoverCarta(colunaIniEscolhida, num2-1);
+					printf("\nCarta inserida na Célula Base com sucesso!\n\n");
+				}
+				else
+				{
+					BAR_LiberarCarta(cartaAlocada);
 				}
 			}
 		}
