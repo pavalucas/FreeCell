@@ -185,7 +185,7 @@ int PAR_ChecarMovimento(LIS_tppLista listaDeListas, int num1, int num2, char ini
 			LIS_IrInicioLista(listaDeListas);
 			LIS_AvancarElementoCorrente(listaDeListas, num2-1);
 			colunaFimEscolhida = LIS_ObterValor(listaDeListas);
-			
+
 			if(CV_InserirCarta(colunaFimEscolhida, cartaAlocada)==CV_CondRetOK)
 			{
 				CV_RemoverCarta(colunaIniEscolhida);
@@ -333,25 +333,25 @@ void PAR_Partida(LIS_tppLista listaDeListas)
 		char fim[100];
 		int num1;
 		int num2;
-		int acao;
+		char acao;
 
 		printf("****** Menu de Acoes ******\n");
 		printf("1. Exibir o Jogo todo\n");
 		printf("2. Movimentar cartas\n");
 		printf("5. Desistir da Partida\n");
 		printf("Digite o numero correspondente para realizar a acao desejada\n");
-		scanf_s("%d", &acao);
+		scanf(" %c", &acao);
 		
 		/* Confere a opcao escolhida */
-		if(acao == 1)
+		if(acao == '1')
 		{
 			PAR_ImprimirPartida(listaDeListas);
 		}
-		else if(acao == 5)
+		else if(acao == '5')
 		{
 			break;
 		}
-		else if(acao == 2)
+		else if(acao == '2')
 		{
 			int cmdInvalido;
 			scanf("%s %d %s %d", ini, &num1, fim, &num2);
@@ -361,12 +361,12 @@ void PAR_Partida(LIS_tppLista listaDeListas)
 			/* Checa se o comando foi invalido em algum momento*/
 			if(cmdInvalido)
 			{
-				printf("Comando nao existente, qualquer duvida siga as instrucoes do leia-me.\n");
+				printf("Comando nao existente, qualquer duvida siga as instrucoes do leia-me.\n\n");
 			}
 		}
 		else
 		{
-			printf("Comando nao existente, digite 1, 2 ou 5.\n");
+			printf("Comando nao existente, digite 1, 2 ou 5.\n\n");
 		}
 	}
 
