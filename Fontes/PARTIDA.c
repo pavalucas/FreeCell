@@ -45,6 +45,11 @@ static void PAR_ImprimirPartida(LIS_tppLista listaDeListas);
 *  Função: CV  &Criar coluna visível
 *  ****/
 
+void PAR_LiberarLista(void* lista)
+{
+    CV_DestruirColunaVisivel((LIS_tppLista) lista);
+}
+
 void PAR_MenuInicial()
 {
 	printf("Bem Vindo ao Free Cell!\n");
@@ -66,7 +71,7 @@ void PAR_InicializarPartida()
 
 
 	/* Criando a Lista de Listas e progressivamente inserindo as listas conforme são criadas */
-	listaDeListas = LIS_CriarLista(NULL);
+	listaDeListas = LIS_CriarLista(PAR_LiberarLista);
 
 	/* Criando e embaralhando o baralho */
 	baralho = BAR_CriarBaralho();
@@ -99,7 +104,7 @@ void PAR_InicializarPartida()
 	while (i < NUMCB)
 	{
 		vetorDeCBs[i] = CB_CriarCelulaBase();
-		LIS_InserirElementoApos(listaDeListas, vetorDeColunas[i]);
+		LIS_InserirElementoApos(listaDeListas, vetorDeCBs[i]);
 		i++;
 	}
 
