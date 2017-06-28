@@ -49,7 +49,7 @@ void PAR_MenuInicial()
 	printf("Bem Vindo ao Free Cell!\n");
 	printf("Para iniciar um novo jogo, aperte <enter>!\n");
 	getchar();
-	PAR_InicializarPartida();
+	
 }
 
 void PAR_InicializarPartida()
@@ -108,6 +108,9 @@ void PAR_InicializarPartida()
 	celulasExtras = CE_CriarCelulasExtras();
 	LIS_InserirElementoApos(listaDeListas, celulasExtras);
 
+	printf("****** Inicio de Jogo ******\n\n");
+	PAR_ImprimirPartida(listaDeListas);
+
 	PAR_Partida(listaDeListas);
 
 }
@@ -148,27 +151,104 @@ void PAR_DividirBaralho(LIS_tppLista vetorBaralhos[], LIS_tppLista baralho)
 
 void PAR_Partida(LIS_tppLista listaDeListas)
 {
-	//int acao;
+	LIS_tppLista colunaIniEscolhida;
+	LIS_tppLista colunaFimEscolhida;
+	BAR_tppCarta cartaIniEscolhida;
+	BAR_tppCarta cartaFimEscolhida;
+
+	char ini[100];
+	char fim[100];
+	int num1;
+	int num2;
 	
-	
 
-	printf("****** Inicio de Jogo ******\n\n");
-	PAR_ImprimirPartida(listaDeListas);
-
-
-	//acao = PAR_MenuDeAcoes();
-
-}
-
-int PAR_MenuDeAcoes()
-{
-	int acao;
 	printf("****** Menu de Acoes ******\n");
-	printf("1. Exibir o Jogo todo\n");
-	printf("2. Desistir da Partida\n");
-	printf("Digite o numero correspondente para realizar a acao desejada\n");
-	scanf("%d", &acao);
+	printf("Escreva a acao desejada\n");
 
+	scanf("%s %d %s %d", ini, &num1, fim, &num2);
+
+	if(num1<0 || num2 <0)
+	{
+		PAR_Partida(listaDeListas);
+		return;
+	}
+
+	LIS_IrInicioLista(listaDeListas);
+
+	if(strcmp(ini, "cv") == 0 && num1<9)
+	{
+		LIS_AvancarElementoCorrente(listaDeListas, num1-1);
+		colunaIniEscolhida = LIS_ObterValor(listaDeListas);
+		LIS_IrFinalLista(colunaIniEscolhida);
+		cartaIniEscolhida = LIS_ObterValor(colunaIniEscolhida);
+
+		if(strcmp(fim, "cv") == 0 && num2<9)
+		{
+			LIS_IrInicioLista(listaDeListas);
+			LIS_AvancarElementoCorrente(listaDeListas, num2-1);
+			colunaFimEscolhida = LIS_ObterValor(listaDeListas);
+			if(CV_InserirCarta(colunaFimEscolhida, cartaIniEscolhida)==CV_CondRetOK)
+			{
+				CV_RemoverCarta(colunaIniEscolhida);
+				printf("Troca de coluna feita com sucesso!\n");
+			}
+		}
+
+		else if(strcmp(fim, "ce")==0 && num2 < 5)
+		{
+			LIS_IrFinalLista(listaDeListas);
+			colunaFimEscolhida = LIS_ObterValor(listaDeListas);
+			if(CE_InserirCarta(colunaFimEscolhida, cartaIniEscolhida) == CE_CondRetOK)
+			{
+				printf("Carta colocada em Celula Extra com sucesso!\n");
+			}
+		}
+		else if(strcmp(fim, "cb")==0 && num2<5)
+		{
+			LIS_IrInicioLista(listaDeListas);
+			LIS_AvancarElementoCorrente(listaDeListas, 7+num2);
+			colunaFimEscolhida = LIS_ObterValor(listaDeListas);
+			if(CB_InserirCarta(colunaFimEscolhida, cartaIniEscolhida) == CB_CondRetOK)
+			{
+				printf("Carta inserida na Célula Base com sucesso!\n");
+			}
+		}
+	}
+	else if(strcmp(ini, "ce") && num1 < 5)
+	{
+		LIS_IrFinalLista(listaDeListas);
+		colunaIniEscolhida = LIS_ObterValor(listaDeListas);
+		LIS_IrInicioLista(colunaIniEscolhida);
+		LIS_AvancarElementoCorrente(colunaIniEscolhida, num1-1);
+		cartaIniEscolhida = LIS_ObterValor(colunaIniEscolhida);
+
+		if(strcmp(fim, "cv") == 0 && num2<9)
+		{
+			LIS_IrInicioLista(listaDeListas);
+			LIS_AvancarElementoCorrente(listaDeListas, num2-1);
+			colunaFimEscolhida = LIS_ObterValor(listaDeListas);
+
+			if(CV_InserirCarta(colunaFimEscolhida, cartaIniEscolhida)==CV_CondRetOK)
+			{
+				CV_RemoverCarta(colunaIniEscolhida);
+				printf("Carta colocada na coluna com sucesso!\n");
+			}
+		}
+		else if(strcmp(fim, "cb") == 0  && num2 < 5)
+		{
+			LIS_IrInicioLista(listaDeListas);
+			LIS_AvancarElementoCorrente(listaDeListas, 7+num2);
+			colunaFimEscolhida = LIS_ObterValor(listaDeListas);
+			if(CB_InserirCarta(colunaFimEscolhida, cartaIniEscolhida) == CB_CondRetOK)
+			{
+				CE_RemoverCarta(cartaIniEscolhida, cartaIniEscolhida);
+				printf("Carta inserida na Célula Base com sucesso!\n");
+			}
+		}
+	}
+	
+
+	PAR_Partida(listaDeListas);
 }
 
 void PAR_ImprimirPartida(LIS_tppLista listaDeListas)
@@ -250,6 +330,7 @@ void PAR_ImprimirPartida(LIS_tppLista listaDeListas)
 int main()
 {
 	PAR_MenuInicial();
+	PAR_InicializarPartida();
 
 	return 0;
 }
