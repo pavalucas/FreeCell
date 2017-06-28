@@ -312,20 +312,20 @@ void PAR_ImprimirPartida(LIS_tppLista listaDeListas)
 	/* Imprimindo a primeira carta do topo das celulas bases */
 	LIS_IrInicioLista(listaDeListas);
 
-	printf("Celulas Base: 1. ");
+	printf("Celulas Base:\n1. ");
 	LIS_AvancarElementoCorrente(listaDeListas, 8);
 	CB_ExibirCelulaBase((LIS_tppLista) LIS_ObterValor(listaDeListas));
-	printf("2. ");
+	printf("\n2. ");
 	LIS_AvancarElementoCorrente(listaDeListas, 1);
 	CB_ExibirCelulaBase((LIS_tppLista) LIS_ObterValor(listaDeListas));
-	printf("3. ");
+	printf("\n3. ");
 	LIS_AvancarElementoCorrente(listaDeListas, 1);
 	CB_ExibirCelulaBase((LIS_tppLista) LIS_ObterValor(listaDeListas));
-	printf("4. ");
+	printf("\n4. ");
 	LIS_AvancarElementoCorrente(listaDeListas, 1);
 	CB_ExibirCelulaBase((LIS_tppLista) LIS_ObterValor(listaDeListas));
 	
-	printf("\n\n");
+	printf("\n\n\n");
 
 
 
