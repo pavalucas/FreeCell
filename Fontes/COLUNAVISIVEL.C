@@ -65,7 +65,6 @@ CV_tpCondRet CV_InicializarColunaVisivel(LIS_tppLista cartas, LIS_tppLista colun
 			return CV_CondRetFaltouMemoria;
 		}
 		condRetAvancar = (CV_tpCondRet)LIS_AvancarElementoCorrente(cartas, 1);
-		cartaTopo = cartaAtual;
 	}
 	return CV_CondRetOK;
 } /* Fim função: CV  &Inicializar */
@@ -80,7 +79,6 @@ CV_tpCondRet CV_RemoverCarta(LIS_tppLista colunaVisivel)
 	CV_tpCondRet retorno;
 	LIS_IrFinalLista(colunaVisivel);
 	retorno = (CV_tpCondRet)LIS_ExcluirElemento(colunaVisivel);
-	cartaTopo = (BAR_tppCarta)LIS_ObterValor(colunaVisivel);
 	return retorno;
 } /* Fim função: CV  &Remover */
 
@@ -92,11 +90,12 @@ CV_tpCondRet CV_RemoverCarta(LIS_tppLista colunaVisivel)
 CV_tpCondRet CV_InserirCarta(LIS_tppLista colunaVisivel, BAR_tppCarta carta)
 {
 	CV_tpCondRet retorno;
+	LIS_IrFinalLista(colunaVisivel);
+	cartaTopo = (BAR_tppCarta)LIS_ObterValor(colunaVisivel);
 	if (ValidarInsercao(carta))
 	{
+		printf("entrei inserir\n");
 		retorno = (CV_tpCondRet)LIS_InserirElementoApos(colunaVisivel, carta);
-		LIS_IrFinalLista(colunaVisivel);
-		cartaTopo = (BAR_tppCarta)LIS_ObterValor(colunaVisivel);
 	}
 	else
 	{
@@ -113,6 +112,8 @@ CV_tpCondRet CV_InserirCarta(LIS_tppLista colunaVisivel, BAR_tppCarta carta)
 CV_tpCondRet CV_ExibirColunaVisivel(LIS_tppLista colunaVisivel)
 {
 	CV_tpCondRet condRet = CV_CondRetListaVazia;
+	LIS_IrFinalLista(colunaVisivel);
+	cartaTopo = (BAR_tppCarta)LIS_ObterValor(colunaVisivel);
 	if (cartaTopo == NULL) return condRet; // Lista vazia
 
 	LIS_IrInicioLista(colunaVisivel);

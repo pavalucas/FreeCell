@@ -42,15 +42,19 @@ static void PAR_ImprimirPartida(LIS_tppLista listaDeListas);
 
 /*****  Código das funções exportadas pelo módulo  *****/
 
-/***************************************************************************
-*
-*  Função: CV  &Criar coluna visível
-*  ****/
+/***********************************************************************
+*  Função: PAR &Liberar Lista
+***********************************************************************/
 
 void PAR_LiberarLista(void* lista)
 {
     CV_DestruirColunaVisivel((LIS_tppLista) lista);
 }
+
+
+/***********************************************************************
+*  Função: PAR &Menu Inicial
+***********************************************************************/
 
 void PAR_MenuInicial()
 {
@@ -60,6 +64,11 @@ void PAR_MenuInicial()
 	getchar();
 	
 }
+
+
+/***********************************************************************
+*  Função: PAR &Inicializar Partida
+***********************************************************************/
 
 void PAR_InicializarPartida()
 {
@@ -121,6 +130,12 @@ void PAR_InicializarPartida()
 	PAR_Partida(listaDeListas);
 }
 
+
+/***********************************************************************
+*  Função: PAR &Dividir Baralho
+***********************************************************************/
+
+
 void PAR_DividirBaralho(LIS_tppLista vetorBaralhos[], LIS_tppLista baralho)
 {
 	int i = 0;
@@ -153,6 +168,11 @@ void PAR_DividirBaralho(LIS_tppLista vetorBaralhos[], LIS_tppLista baralho)
 		i++;
 	}
 }
+
+
+/***********************************************************************
+*  Função: PAR &Checar Movimento
+***********************************************************************/
 
 int PAR_ChecarMovimento(LIS_tppLista listaDeListas, int num1, int num2, char ini[], char fim[])
 {
@@ -325,6 +345,11 @@ int PAR_ChecarMovimento(LIS_tppLista listaDeListas, int num1, int num2, char ini
 }
 
 
+
+/***********************************************************************
+*  Função: PAR &Partida
+***********************************************************************/
+
 void PAR_Partida(LIS_tppLista listaDeListas)
 {
 	while(TRUE)
@@ -372,8 +397,12 @@ void PAR_Partida(LIS_tppLista listaDeListas)
 
 	LIS_DestruirLista(listaDeListas);
 	exit(1);
-	//PAR_Partida(listaDeListas);
 }
+
+
+/***********************************************************************
+*  Função: PAR &Imprimir Partida
+***********************************************************************/
 
 void PAR_ImprimirPartida(LIS_tppLista listaDeListas)
 {
@@ -451,6 +480,11 @@ void PAR_ImprimirPartida(LIS_tppLista listaDeListas)
 
 	printf("\n\n");
 }
+
+
+/***********************************************************************
+*  Função: BAR &Main
+***********************************************************************/
 
 int main()
 {
