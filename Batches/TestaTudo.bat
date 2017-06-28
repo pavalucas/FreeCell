@@ -11,3 +11,7 @@ call TestaCB
 call TestaCE
 
 call TestaCV
+
+call TestaListaDebug
+
+type ..count
