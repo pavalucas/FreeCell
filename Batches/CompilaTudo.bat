@@ -4,6 +4,8 @@ cls
 
 call CompilaLista
 
+call CompilaListaDebug
+
 call CompilaBaralho
 
 call CompilaCB
