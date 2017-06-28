@@ -99,12 +99,9 @@ LIS_tppLista   vtListas[ DIM_VT_LISTA ] ;
 *     compilado com _DEBUG ligado
 *
 *     =verificarcabeca       <inxLista>
-*
 *     =verificarlista        <inxLista>
-*
 *     =verificarmemoria
-*
-*     =deturparlista              <inxLista> < idCodigoDeturpa >
+*     =deturparlista         <inxLista> <idCodigoDeturpa>
 *
 ***********************************************************************/
 

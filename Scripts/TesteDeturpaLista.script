@@ -69,7 +69,7 @@
 == Deturpar ponteiro para cabeça
 =deturparlista lista2 DeturpaTipoCabeca
 =verificarlista lista2 ErroEstrutura     // nesse caso temos uma falha, 
-										//  pois alteramos o tipo da cabeça
+=AceitaFalhasAcumuladas 1				//  pois alteramos o tipo da cabeça
 
 == Destruir a lista
 =destruirlista   lista2
@@ -88,7 +88,7 @@
 =irinicio lista3
 =deturparlista lista3 DeturpaPtProxNulo
 =verificarlista lista3 ErroEstrutura     // nesse caso temos uma falha, 
-										//  pois o ultimo nó da lista não é apontado por pFimLista
+=AceitaFalhasAcumuladas 1				//  pois o ultimo nó da lista não é apontado por pFimLista
 
 == Destruir a lista
 =destruirlista   lista3
