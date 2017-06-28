@@ -10,6 +10,7 @@
 
 #include   <malloc.h>
 #include   <stdio.h>
+#include   <string.h>
 #include "CELULABASE.h"
 #include "CELULAEXTRA.h"
 #include "COLUNAVISIVEL.h"
@@ -54,8 +55,8 @@ void PAR_MenuInicial()
 
 void PAR_InicializarPartida()
 {
-	BAR_tppCarta carta = BAR_CriarCarta(1, 2);
-	int i, j; // variáveis para iterar
+	//BAR_tppCarta carta = BAR_CriarCarta(1, 2);
+	int i; // variáveis para iterar
 	LIS_tppLista listaDeListas;
 	LIS_tppLista celulasExtras;
 	LIS_tppLista vetorDeColunas[NUMCV];
@@ -150,7 +151,6 @@ void PAR_Partida(LIS_tppLista listaDeListas)
 	LIS_tppLista colunaIniEscolhida;
 	LIS_tppLista colunaFimEscolhida;
 	BAR_tppCarta cartaIniEscolhida;
-	BAR_tppCarta cartaFimEscolhida;
 
 	char ini[100];
 	char fim[100];
@@ -241,6 +241,7 @@ void PAR_Partida(LIS_tppLista listaDeListas)
 			}
 			else if(strcmp(fim, "cb") == 0  && num2 < 5)
 			{
+
 				LIS_IrInicioLista(listaDeListas);
 				LIS_AvancarElementoCorrente(listaDeListas, 7+num2);
 				colunaFimEscolhida = LIS_ObterValor(listaDeListas);
