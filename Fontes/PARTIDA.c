@@ -5,7 +5,7 @@
 *  Letras identificadoras:      PAR
 *
 *  Projeto: INF 1301 / FreeCell
-*  Autores: Miguel Corti
+*  Autores: Handel Scholze e Miguel Corti
 ***************************************************************************/
 
 #include   <malloc.h>
@@ -49,13 +49,13 @@ void PAR_MenuInicial()
 	printf("Bem Vindo ao Free Cell!\n");
 	printf("Para iniciar um novo jogo, aperte <enter>!\n");
 	getchar();
-	printf("OK!\n");
 	PAR_InicializarPartida();
 }
 
 void PAR_InicializarPartida()
 {
-	int i; // variável para iterar
+	BAR_tppCarta carta = BAR_CriarCarta(1, 2);
+	int i, j; // variáveis para iterar
 	LIS_tppLista listaDeListas;
 	LIS_tppLista celulasExtras;
 	LIS_tppLista vetorDeColunas[NUMCV];
@@ -76,14 +76,24 @@ void PAR_InicializarPartida()
 
 	/* Criando e inicializando as colunas visiveis */
 	PAR_DividirBaralho(vetorBaralhos, baralho);
+	
+	LIS_IrInicioLista(baralho);
+	LIS_IrInicioLista(vetorBaralhos);
+
 	i = 0;
-	while (i < NUMCV)
+
+	while(i < NUMCV)
 	{
 		vetorDeColunas[i] = CV_CriarColunaVisivel();
-		CV_InicializarColunaVisivel(vetorDeColunas[i], vetorBaralhos[i]);
+
+		CV_InicializarColunaVisivel(vetorBaralhos[i], vetorDeColunas[i]);
+
 		LIS_InserirElementoApos(listaDeListas, vetorDeColunas[i]);
 		i++;
 	}
+
+	
+	
 
 	/* Criando celulas base */
 	i = 0;
@@ -110,6 +120,7 @@ void PAR_DividirBaralho(LIS_tppLista vetorBaralhos[], LIS_tppLista baralho)
 
 	while (i < NUMCV)
 	{
+
 		int j, maxCartas;
 		BAR_tppCarta cartaAtual;
 		vetorBaralhos[i] = LIS_CriarLista(BAR_LiberarCarta);
@@ -123,8 +134,7 @@ void PAR_DividirBaralho(LIS_tppLista vetorBaralhos[], LIS_tppLista baralho)
 			maxCartas = 6;
 		}// As ultimas quatro colunas começam com 6 cartas
 		
-		j = 0;
-		while (j < maxCartas || condRetAvancar != CV_CondRetFimLista)
+		for(j=0; j < maxCartas && condRetAvancar == CV_CondRetOK; j++)
 		{
 			cartaAtual = (BAR_tppCarta)LIS_ObterValor(baralho);
 			LIS_InserirElementoApos(vetorBaralhos[i], cartaAtual);
@@ -133,6 +143,7 @@ void PAR_DividirBaralho(LIS_tppLista vetorBaralhos[], LIS_tppLista baralho)
 
 		i++;
 	}
+
 }
 
 void PAR_Partida(LIS_tppLista listaDeListas)
@@ -189,39 +200,49 @@ void PAR_ImprimirPartida(LIS_tppLista listaDeListas)
 	
 	printf("\n\n");
 
+
+
 	/* Imprimindo as colunas visiveis */
 	LIS_IrInicioLista(listaDeListas);
 
 	printf("Coluna 01: ");
 	CV_ExibirColunaVisivel((LIS_tppLista) LIS_ObterValor(listaDeListas));
+	printf("\n");
 
 	printf("Coluna 02: ");
 	LIS_AvancarElementoCorrente(listaDeListas, 1);
 	CV_ExibirColunaVisivel((LIS_tppLista) LIS_ObterValor(listaDeListas));
+	printf("\n");
 
 	printf("Coluna 03: ");
 	LIS_AvancarElementoCorrente(listaDeListas, 1);
 	CV_ExibirColunaVisivel((LIS_tppLista) LIS_ObterValor(listaDeListas));
+	printf("\n");
 
 	printf("Coluna 04: ");
 	LIS_AvancarElementoCorrente(listaDeListas, 1);
 	CV_ExibirColunaVisivel((LIS_tppLista) LIS_ObterValor(listaDeListas));
+	printf("\n");
 
 	printf("Coluna 05: ");
 	LIS_AvancarElementoCorrente(listaDeListas, 1);
 	CV_ExibirColunaVisivel((LIS_tppLista) LIS_ObterValor(listaDeListas));
+	printf("\n");
 
 	printf("Coluna 06: ");
 	LIS_AvancarElementoCorrente(listaDeListas, 1);
 	CV_ExibirColunaVisivel((LIS_tppLista) LIS_ObterValor(listaDeListas));
+	printf("\n");
 
 	printf("Coluna 07: ");
 	LIS_AvancarElementoCorrente(listaDeListas, 1);
 	CV_ExibirColunaVisivel((LIS_tppLista) LIS_ObterValor(listaDeListas));
+	printf("\n");
 
 	printf("Coluna 08: ");
 	LIS_AvancarElementoCorrente(listaDeListas, 1);
 	CV_ExibirColunaVisivel((LIS_tppLista) LIS_ObterValor(listaDeListas));
+	printf("\n");
 
 	printf("\n\n");
 }

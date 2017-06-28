@@ -923,11 +923,25 @@
 
    } /* Fim função: LIS  -Limpar a cabeça da lista */
 
+<<<<<<< HEAD
+=======
 #ifdef _DEBUG
+>>>>>>> 0d8d38075b3d9113513bc46b669ddeb5968eeaa8
 
 
 /***********************************************************************
 *
+<<<<<<< HEAD
+*  $FC Função: LIS  - Obter Tamanho Lista
+*
+***********************************************************************/
+
+
+int LIS_obterTamanhoLista( LIS_tppLista pLista )
+{
+   return pLista->numElem;
+} /* Fim função: LIS  - Obter Tamanho Lista */
+=======
 *  $FC Função: LIS  -Explorar verificando os nós de uma lista
 *
 *  $ED Descrição da função
@@ -962,5 +976,6 @@
    } /* Fim função: LIS  -Explorar verificando os nós de uma lista */
 
 #endif
+>>>>>>> 0d8d38075b3d9113513bc46b669ddeb5968eeaa8
 
 /********** Fim do módulo de implementação: LIS  Lista duplamente encadeada **********/

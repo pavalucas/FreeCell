@@ -35,6 +35,25 @@
 
 	typedef struct BAR_tagCarta * BAR_tppCarta;
 
+/***********************************************************************
+*
+*  $TC Tipo de dados: BAR Condições de retorno
+*
+*
+*  $ED Descrição do tipo
+*     Condições de retorno das funções do Baralho
+*
+***********************************************************************/
+
+   typedef enum {
+
+         BAR_CondRetOK ,
+               /* Concluiu corretamente */
+
+         BAR_CondRetNull ,
+               /* Entrada nula */
+
+   } BAR_tpCondRet ;
 
 /***********************************************************************
 *
@@ -117,9 +136,14 @@
 *
 *  $EP Parâmetros
 *     carta - ponteiro para a carta
+*
+*  $FV Valor retornado
+*     BAR_CondRetOK
+*     BAR_CondRetNull
+*
 ***********************************************************************/
 
-	void BAR_ImprimirCarta(BAR_tppCarta carta);
+	BAR_tpCondRet BAR_ImprimirCarta(BAR_tppCarta carta);
 
 /***********************************************************************
 *  $FC Função: BAR  &Liberar Carta
