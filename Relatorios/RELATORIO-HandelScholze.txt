@@ -1,23 +1,14 @@
-Data; Horas Trabalhadas; Tipo Tarefa; Descrição da Tarefa Realizada
+﻿Data; Horas Trabalhadas; Tipo Tarefa; Descrição da Tarefa Realizada
 
-16/04/2017; 2 horas; estudar; Estudei o arcabouço, entendendo seu funcionamento.
-16/04/2017; 1 hora; especificar os módulos; Comecei a especificar o módulo célula extra
+15/06/2017; 1 horas; estudar; Modulo Conta
+16/04/2017; 2 horas; estudar; Scripts de conta
+19/06/2017; 3 horas; revisar código do módulo; Fiz contadores no Lista
+20/06/2017; 1 horas; redigir script; script do conta para lista 
+20/06/2017; 2 horas; codificar módulo; Programar o partida
+21/06/2017; 3 hora; diagnosticar e corrigir os problemas encontrados; varios erros surgiram
+22/06/2017; 2 horas; revisar código do módulo; voltei a olhar funções de alguns modulos do t2
+26/06/2017; 4 hora; codificar módulo; ainda fazendo o modulo partida, erros desconhecidos
+27/06/2017; 3 horas; codificar módulo; consegui algum progresso no partida
+27/06/2017; 1 horas; revisar código do módulo; Vendo erros do partida
+27/06/2017; 2 horas; codificar módulo; ajustando ultimas coisas do módulo partida
 
-24/04/2017; 1/2 hora; especificar os módulos; Terminei a especificação do módulo célula extra
-24/04/2017; 1/2 hora; revisar especificações; Revisei a especificação do módulo célula extra
-
-30/04/2017; 1 hora; codificar módulo; Desenvolvi a função BAR_ImprimirCarta() do módulo baralho
-
-05/05/2017; 3 horas; codificar módulo; Comecei a desenvolver o módulo célula extra
-
-06/05/2017; 2 horas; codificar módulo; Terminei de desenvolver o módulo célula extra
-06/05/2017; 2 horas; estudar; vendo exemplos do arcabouço
-
-07/05/2017; 1 hora; revisar código de modulo; Revisei os módulos baralho e célula extra
-
-08/05/2017; 2 horas; redigir script de teste; Comecei a redigir o script e controlador de teste para célula extra
-
-10/05/2017; 5 horas; redigir script de teste; Terminei de redigir o script e controlador de teste para célula extra
-
-11/05/2017; 3 horas; revisar script de teste; revisando script e controlador de teste para célula extra
-11/05/2017; 1 hora; diagnosticar e corrigir os problemas encontrados; resolvendo problemas acusados nos testes

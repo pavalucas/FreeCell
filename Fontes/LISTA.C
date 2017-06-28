@@ -664,7 +664,7 @@
    {
 
       LIS_tpLista * pLista = NULL ;
-
+         
       /* Verifica o tipo do espaço */
 
          if ( pCabecaParm == NULL )

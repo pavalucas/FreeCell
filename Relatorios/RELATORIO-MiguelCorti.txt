@@ -1,32 +1,21 @@
 Data; Horas Trabalhadas; Tipo Tarefa; Descrição da Tarefa Realizada
 
-27/04/2017; 2 horas; codificar módulo; Comecei o desenvolvimento do módulo baralho
-27/04/2017; 2 horas; codificar módulo; Comecei o desenvolvimento do módulo de célula base (a.k.a. sequência ordenada)
+12/06/2017; 3 horas; codificar módulo; Comecei o desenvolvimento do módulo partida
+15/04/2017; 2 horas; estudar; Tentando compreender erros de compilação
 
-01/05/2017; 3 horas; codificar módulo; Terminei o desenvolvimento do módulo de célula base
+15/06/2017; 2 horas; estudar; Estudando o modulo conta
+16/06/2017; 3 horas; estudar; Mexendo no exemplo instrum do arcabouço
 
-02/05/2017; 1 hora; codificar módulo; Desenvolvendo o módulo baralho
-02/05/2017; 1 hora; estudar; aprendendo a usar e configurar o arcabouço
+20/06/2017; 2 horas; revisar código do módulo; Comecei a implementar os contadores no Lista.c
+20/06/2017; 1 hora; redigir script; Junto fiz alguns testes simples para contar.
 
-04/05/2017; 1 hora; estudar; vendo exemplos do arcabouço
-04/05/2017; 1 hora; redigir script de teste; redigindo script e controlador de teste para baralho
+23/06/2017; 2 horas; codificar módulo; Terminei todas as arestas das funções principais de Lista.c
+24/06/2017; 2 horas; redigir script; Fazendo script de contar para o Lista.c
 
-05/05/2017; 2 horas; redigir script de teste; redigindo script e controlador de teste para célula base
+26/06/2017; 1 hora; estudar; tentando resolver problema com batches e geração de arquivos para compilar
+26/06/2017; 3 horas; redigir script de teste; Terminei os contadores para lista.c, passando por tudo!
 
-07/05/2017; 2 horas; redigir script de teste; redigindo script e controlador de teste para célula base
-07/05/2017; 1 hora; revisar script de teste; revisando script e controlador de teste para célula base
-07/05/2017; 1/2 hora; realizar os testes; executando os testes de célula base
-07/05/2017; 1/2 hora; diagnosticar e corrigir os problemas encontrados; resolvendo problemas acusados nos testes
+27/06/2017; 2 horas; realizar os testes; os testes contaram tudo, mas encontraram alguns problemas novos
+27/06/2017; 2 horas; revisar código do módulo; Mudando algumas coisas do modulo lista
+27/06/2017; 2 horas; revisar código do módulo; Ajudando a revisar o partida e modulos do qual dependia
 
-08/05/2017; 3 horas; redigir script de teste; redigindo script e controlador de teste para baralho
-
-09/05/2017; 1 hora; revisar script de teste; revisando script e controlador de teste para baralho
-09/05/2017; 1/2 hora; realizar os testes; executando os testes de baralho
-09/05/2017; 1/2 hora; diagnosticar e corrigir os problemas encontrados; resolvendo problemas acusados nos testes de baralho
-
-10/05/2017; 2 horas; revisar código de modulo; revisando código de baralho e célula base
-
-11/05/2017; 2 horas, revisar script de teste; revisando testes de baralho e célula base
-11/05/2017; 1/4 hora; realizar os testes; executando os testes de ambos
-11/05/2017; 2 horas; diagnosticar e corrigir os problemas encontrados; resolvendo problemas acusados nos testes
-11/05/2017; 1 hora; revisar especificações; fiz alterações e fiz também arquitetura do software no computador

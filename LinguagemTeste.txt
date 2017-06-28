@@ -1,0 +1,46 @@
+FUNCOES MODULO LISTA:
+
+=resetteste
+=criarlista                   <inxLista>
+=destruirlista                <inxLista>
+=esvaziarlista                <inxLista>
+=inselemantes                 <inxLista>    <string>          <CondRetEsp>
+=inselemapos                  <inxLista>    <string>          <CondRetEsp>
+=obtervalorelem               <inxLista>    <string>          <CondretPonteiro>
+=excluirelem                  <inxLista>    <CondRetEsp>
+=irinicio                     <inxLista>
+=irfinal                      <inxLista>
+=avancarelem                  <inxLista>    <numElem>         <CondRetEsp>
+
+=verificarcabeca              <inxLista>
+=verificarlista               <inxLista>
+=verificarmemoria
+=deturpar                     <inxLista>    <idCodigoDeturpa>
+
+FUNCOES MODULO CONTA:
+
+=inicializarcontadores     <cond ret>
+=terminarcontadores        <cond ret>
+=registraracumulador       <nome arquivo acumulador>
+=lercontadores             <nome arquivo contadores> <num erros esperados>
+=zerartodoscontadores      <cond ret>
+=zerarcontador             <nome contador> <cond ret>
+=iniciarcontagem
+=pararcontagem
+=contagemcontador          <nome contador> <contagem esperada>
+=numcontadores             <num esperado>
+=contagemtotal             <Contagem esperada>
+=verificarcontagens        <num contadores zero esperados>
+
+
+FUNCOES MODULO CESPDIN:
+
+=exibirtodosespacos         <Regra>
+=verificartodosespacos      <numFalhasEsperado>
+=obternumeroespacosalocados <numAlocadosEsperado>
+=obternumerototalespacos    <numTotalEsperado>
+=obternumeroregra           <regra>  <numEsperado>
+=obtertotalespacosalocado   <totalEsperado>
+=limitarmemoriadisponivel   <novoLimite>
+=limitarnumeroespacos       <novoLimite>
+=eliminarlimitesespaco

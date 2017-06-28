@@ -27,7 +27,7 @@ ______________________________________________
 |________________XXI///____________XXII_///   |
 |_______________/////______________////_______|
 
-Para avaliar o projeto:
+PARA AVALIAR OS MÓDULOS:
 1. Extrair o zip
 2. Abrir CMD
 3. Ir até o diretório Batches
@@ -42,8 +42,10 @@ Para avaliar o projeto:
 		- Módulo Coluna Visível -> CompilaCV.bat
 		- Módulo Célula Base -> CompilaCB.bat
 
-5. Para rodar todos os testes:
-	4.1. Rodar o TestaTudo.bat
+5. Para compilar o lista em modo debug -> rode CompilaListaDebug.bat
+
+6. Para rodar todos os testes:
+	6.1. Rodar o TestaTudo.bat
 
 	Para testes individuais de cada módulo:
 	Rodar:  - Módulo Lista -> TestaLista.bat
@@ -51,6 +53,44 @@ Para avaliar o projeto:
 		- Módulo Células Extras -> TestaCE.bat
 		- Módulo Coluna Visível -> TestaCV.bat
 		- Módulo Célula Base -> TestaCB.bat
+
+7. Para rodar os testes de debug:
+	7.1 Os testes de contadores -> TestaListaDebug.bat
+	7.2 Os testes de controle de espaços -> TestaListaDebug.bat
+
+
+PARA COMPILAR E RODAR O JOGO:
+1. Executar: CompilaPartida.bat
+2. Ir na pasta produto e executar o exe: TestePartida.exe
+
+PARA JOGAR O JOGO:
+
+Assim que aberto o jogo digite enter para começar uma partida.
+Será exibido na tela a configuração inicial do jogo.
+Neste momento você pode tomar 3 ações:
+	1. Mostrar o jogo todo
+	2. Desistir da partida
+	3. Realizar um movimento
+
+Com relação aos movimentos, há algumas possibilidades:
+	1. Para mover a carta do topo de uma coluna para outra: "cv X cv Y", 
+	   sendo X e Y numeros naturais entre 1 e 8 (dado que são 8 colunas).
+	2. Para mover de uma coluna para uma celula extra: "cv X ce Y",
+	   com X entre 1 e 8, e Y entre 1 e 4 (dado que são 8 colunas e 4 espaços vazios).
+	3. Para mover de uma celula extra para uma coluna: "ce Y cv X",
+	   com X entre 1 e 8, e Y entre 1 e 4.
+	4. Para botar uma carta da coluna na celula base:  "cv X cb Y",
+	   com X entre 1 e 8, e Y entre 1 e 4 (dado que são 8 colunas e 4 células bases).
+	5. Para botar uma carta da celula extra na celula base:  "ce X cb Y",
+	   com X e Y entre 1 e 4 (dado que são 4 células bases e celulas extras).
+	6. Alguns comandos extras: 
+		6.1. Exibir partida: "exibir".
+		6.2. Desistir da partida: "desistir".
+
+Os movimentos só serão aceitos caso sejam válidos caso a entrada sejá uma das entradas válidas
+E o movimento esteja de acordo com as regras do jogo.
+
+
 
 OBS.: O ArcaboucoTeste.lib já está incluido no zip.
 
