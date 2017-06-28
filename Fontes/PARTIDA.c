@@ -70,10 +70,12 @@ void PAR_InicializarPartida()
 
 	/* Criando e embaralhando o baralho */
 	baralho = BAR_CriarBaralho();
+
 	if(BAR_Embaralhar(baralho) != LIS_CondRetOK)
 	{
 		printf("Erro embaralhando");
 	}
+
 
 	/* Criando e inicializando as colunas visiveis */
 	PAR_DividirBaralho(vetorBaralhos, baralho);
@@ -92,9 +94,6 @@ void PAR_InicializarPartida()
 		i++;
 	}
 
-	
-	
-
 	/* Criando celulas base */
 	i = 0;
 	while (i < NUMCB)
@@ -112,7 +111,6 @@ void PAR_InicializarPartida()
 	PAR_ImprimirPartida(listaDeListas);
 
 	PAR_Partida(listaDeListas);
-
 }
 
 void PAR_DividirBaralho(LIS_tppLista vetorBaralhos[], LIS_tppLista baralho)
@@ -146,7 +144,6 @@ void PAR_DividirBaralho(LIS_tppLista vetorBaralhos[], LIS_tppLista baralho)
 
 		i++;
 	}
-
 }
 
 void PAR_Partida(LIS_tppLista listaDeListas)
@@ -154,98 +151,144 @@ void PAR_Partida(LIS_tppLista listaDeListas)
 	LIS_tppLista colunaIniEscolhida;
 	LIS_tppLista colunaFimEscolhida;
 	BAR_tppCarta cartaIniEscolhida;
+	BAR_tppCarta cartaAlocada;
 
 	char ini[100];
 	char fim[100];
 	int num1;
 	int num2;
-	
+	int acao;
+	int numero;
+	int naipe;
 
 	printf("****** Menu de Acoes ******\n");
-	printf("Escreva a acao desejada\n");
+	printf("1. Exibir o Jogo todo\n");
+	printf("2. Movimentar cartas\n");
+	printf("5. Desistir da Partida\n");
+	printf("Digite o numero correspondente para realizar a acao desejada\n");
+	scanf("%d", &acao);
 
-	scanf("%s %d %s %d", ini, &num1, fim, &num2);
-
-	if(num1<0 || num2 <0)
+	if(acao == 1)
 	{
-		PAR_Partida(listaDeListas);
-		return;
+		PAR_ImprimirPartida(listaDeListas);
 	}
-
-	LIS_IrInicioLista(listaDeListas);
-
-	if(strcmp(ini, "cv") == 0 && num1<9)
+	else if(acao == 5)
 	{
-		LIS_AvancarElementoCorrente(listaDeListas, num1-1);
-		colunaIniEscolhida = LIS_ObterValor(listaDeListas);
-		LIS_IrFinalLista(colunaIniEscolhida);
-		cartaIniEscolhida = LIS_ObterValor(colunaIniEscolhida);
+		exit(1);
+	}
+	else if(acao == 2)
+	{
 
-		if(strcmp(fim, "cv") == 0 && num2<9)
-		{
-			LIS_IrInicioLista(listaDeListas);
-			LIS_AvancarElementoCorrente(listaDeListas, num2-1);
-			colunaFimEscolhida = LIS_ObterValor(listaDeListas);
-			if(CV_InserirCarta(colunaFimEscolhida, cartaIniEscolhida)==CV_CondRetOK)
+		scanf("%s %d %s %d", ini, &num1, fim, &num2);
+
+		LIS_IrInicioLista(listaDeListas);
+
+		if(strcmp(ini, "cv") == 0 && num1<9)
+		{			
+			LIS_AvancarElementoCorrente(listaDeListas, num1-1);
+			colunaIniEscolhida = LIS_ObterValor(listaDeListas);
+			LIS_IrFinalLista(colunaIniEscolhida);
+			cartaIniEscolhida = LIS_ObterValor(colunaIniEscolhida);
+
+			naipe = BAR_ObterNaipe( cartaIniEscolhida );
+			numero = BAR_ObterNumero( cartaIniEscolhida );
+			cartaAlocada = BAR_CriarCarta(naipe, numero);
+		
+			if(strcmp(fim, "cv") == 0 && num2<9)
 			{
-				CV_RemoverCarta(colunaIniEscolhida);
-				printf("Troca de coluna feita com sucesso!\n");
+				
+
+				LIS_IrInicioLista(listaDeListas);
+				LIS_AvancarElementoCorrente(listaDeListas, num2-1);
+				colunaFimEscolhida = LIS_ObterValor(listaDeListas);
+				
+				if(CV_InserirCarta(colunaFimEscolhida, cartaAlocada)==CV_CondRetOK)
+				{
+					CV_RemoverCarta(colunaIniEscolhida);
+					printf("\nTroca de coluna feita com sucesso!\n\n");
+				}
+				else
+				{
+					BAR_LiberarCarta(cartaAlocada);
+				}
+			}
+
+			else if(strcmp(fim, "ce")==0 && num2 < 5)
+			{
+				LIS_IrFinalLista(listaDeListas);
+				colunaFimEscolhida = LIS_ObterValor(listaDeListas);
+				if(CE_InserirCarta(colunaFimEscolhida, cartaAlocada) == CE_CondRetOK)
+				{
+					CV_RemoverCarta(colunaIniEscolhida);
+					printf("\nCarta colocada em Celula Extra com sucesso!\n\n");
+				}
+				else
+				{
+					BAR_LiberarCarta(cartaAlocada);
+				}
+			}
+			else if(strcmp(fim, "cb")==0 && num2<5)
+			{
+				LIS_IrInicioLista(listaDeListas);
+				LIS_AvancarElementoCorrente(listaDeListas, 7+num2);
+				colunaFimEscolhida = LIS_ObterValor(listaDeListas);
+				if(CB_InserirCarta(colunaFimEscolhida, cartaAlocada) == CB_CondRetOK)
+				{
+					CV_RemoverCarta(colunaIniEscolhida);
+					printf("\nCarta inserida na Célula Base com sucesso!\n\n");
+				}
+				else
+				{
+					BAR_LiberarCarta(cartaAlocada);
+				}
 			}
 		}
-
-		else if(strcmp(fim, "ce")==0 && num2 < 5)
+		else if(strcmp(ini, "ce") && num1 < 5)
 		{
 			LIS_IrFinalLista(listaDeListas);
-			colunaFimEscolhida = LIS_ObterValor(listaDeListas);
-			if(CE_InserirCarta(colunaFimEscolhida, cartaIniEscolhida) == CE_CondRetOK)
+			colunaIniEscolhida = LIS_ObterValor(listaDeListas);
+			LIS_IrInicioLista(colunaIniEscolhida);
+			LIS_AvancarElementoCorrente(colunaIniEscolhida, num1-1);
+			cartaIniEscolhida = LIS_ObterValor(colunaIniEscolhida);
+
+			naipe = BAR_ObterNaipe( cartaIniEscolhida );
+			numero = BAR_ObterNumero( cartaIniEscolhida );
+			cartaAlocada = BAR_CriarCarta(naipe, numero);
+
+			if(strcmp(fim, "cv") == 0 && num2<9)
 			{
-				printf("Carta colocada em Celula Extra com sucesso!\n");
+				LIS_IrInicioLista(listaDeListas);
+				LIS_AvancarElementoCorrente(listaDeListas, num2-1);
+				colunaFimEscolhida = LIS_ObterValor(listaDeListas);
+
+				if(CV_InserirCarta(colunaFimEscolhida, cartaAlocada)==CV_CondRetOK)
+				{
+					CV_RemoverCarta(colunaIniEscolhida);
+					printf("\nCarta colocada na coluna com sucesso!\n\n");
+				}
+				else
+				{
+					BAR_LiberarCarta(cartaAlocada);
+				}
 			}
-		}
-		else if(strcmp(fim, "cb")==0 && num2<5)
-		{
-			LIS_IrInicioLista(listaDeListas);
-			LIS_AvancarElementoCorrente(listaDeListas, 7+num2);
-			colunaFimEscolhida = LIS_ObterValor(listaDeListas);
-			if(CB_InserirCarta(colunaFimEscolhida, cartaIniEscolhida) == CB_CondRetOK)
+			else if(strcmp(fim, "cb") == 0  && num2 < 5)
 			{
-				printf("Carta inserida na Célula Base com sucesso!\n");
+
+				LIS_IrInicioLista(listaDeListas);
+				LIS_AvancarElementoCorrente(listaDeListas, 7+num2);
+				colunaFimEscolhida = LIS_ObterValor(listaDeListas);
+				if(CB_InserirCarta(colunaFimEscolhida, cartaAlocada) == CB_CondRetOK)
+				{
+					CE_RemoverCarta(colunaIniEscolhida, num2-1);
+					printf("\nCarta inserida na Célula Base com sucesso!\n\n");
+				}
+				else
+				{
+					BAR_LiberarCarta(cartaAlocada);
+				}
 			}
 		}
 	}
-	else if(strcmp(ini, "ce") && num1 < 5)
-	{
-		LIS_IrFinalLista(listaDeListas);
-		colunaIniEscolhida = LIS_ObterValor(listaDeListas);
-		LIS_IrInicioLista(colunaIniEscolhida);
-		LIS_AvancarElementoCorrente(colunaIniEscolhida, num1-1);
-		cartaIniEscolhida = LIS_ObterValor(colunaIniEscolhida);
-
-		if(strcmp(fim, "cv") == 0 && num2<9)
-		{
-			LIS_IrInicioLista(listaDeListas);
-			LIS_AvancarElementoCorrente(listaDeListas, num2-1);
-			colunaFimEscolhida = LIS_ObterValor(listaDeListas);
-
-			if(CV_InserirCarta(colunaFimEscolhida, cartaIniEscolhida)==CV_CondRetOK)
-			{
-				CV_RemoverCarta(colunaIniEscolhida);
-				printf("Carta colocada na coluna com sucesso!\n");
-			}
-		}
-		else if(strcmp(fim, "cb") == 0  && num2 < 5)
-		{
-			LIS_IrInicioLista(listaDeListas);
-			LIS_AvancarElementoCorrente(listaDeListas, 7+num2);
-			colunaFimEscolhida = LIS_ObterValor(listaDeListas);
-			if(CB_InserirCarta(colunaFimEscolhida, cartaIniEscolhida) == CB_CondRetOK)
-			{
-				CE_RemoverCarta(colunaIniEscolhida, num1-1);
-				printf("Carta inserida na Célula Base com sucesso!\n");
-			}
-		}
-	}
-	
 
 	PAR_Partida(listaDeListas);
 }

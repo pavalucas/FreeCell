@@ -1,5 +1,5 @@
 vsvars32.bat
 *.obj
 Produto/
-*.count
+Batches/*.count
 *.estat

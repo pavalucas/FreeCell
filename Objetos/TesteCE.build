@@ -1,0 +1,6 @@
+/OUT:..\produto\TesteCE.exe
+/INCREMENTAL:NO
+/MACHINE:IX86
+lista.obj  baralho.obj  celulaextra.obj  testce.obj  
+ArcaboucoTeste.lib
+

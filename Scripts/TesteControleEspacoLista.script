@@ -51,23 +51,28 @@
 =obternumeroespacosalocados  0
 =verificartodosespacos       CriterioExibir
 
+== Verificar comando recuperar
+=inselemapos     lista2   str3   OK
+=recuperar
+
 == Limitar o numero de espacos
-=limitarmemoriadisponivel 500
+=limitarnumeroespacos 6
 
 == Criar uma lista com quatro elementos
 =criarlista      lista2 
 =inselemapos     lista2   str0   OK
 =inselemapos     lista2   str1   OK
-=inselemapos     lista2   str2   OK
-=inselemapos     lista2   str3   OK
+=inselemapos     lista2   str2   FaltouMemoria
+=inselemapos     lista2   str3   FaltouMemoria
 
+=obternumeroespacosalocados    5
 
 =verificarcabeca lista2
 =verificarlista lista2 OK
 
-=obternumerototalespacos 16  	// 7 da lista1 destruida + 9 da lista2
+=obternumerototalespacos 14  	// 7 da lista1 destruida + 7 da lista2
 
-== Elimina o limte de espaco
+== Elimina o limite de espaco
 =eliminarlimitesespaco
 
 == Destruir a lista
