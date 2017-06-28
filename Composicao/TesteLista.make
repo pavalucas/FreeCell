@@ -62,7 +62,8 @@ limpa :
 
 $(Fobj)\lista.obj :  {$(Pc)}\lista.c \
     ..\\tabelas\\idtiposespaco.def {$(Ph)}cespdin.h            {$(Ph)}conta.h              \
-    {$(Ph)}lista.h              {$(Pdef)}tiposespacoslista.def
+    {$(Ph)}generico.h           {$(Ph)}lista.h              {$(Pdef)}tiposespacoslista.def \
+    {$(Ph)}tst_espc.h          
    cl $(O) $(OPT) /Fo$(Fobj)\ $(Fc)\$(@B).c >> $(Ferr)\$(NOME).err
 
 $(Fobj)\testlis.obj :  {$(Pc)}\testlis.c \

@@ -13,3 +13,6 @@ if errorlevel 4 goto sai
 ..\produto\TesteListaDebug.exe   /s..\scripts\TesteControleEspacoLista     /l..\produto\TesteControleEspacoLista      /a..\scripts\estatisticas
 if errorlevel 4 goto sai
 
+..\produto\TesteListaDebug.exe   /s..\scripts\TesteDeturpaLista           /l..\produto\TesteDeturpaLista      /a..\scripts\estatisticas
+if errorlevel 4 goto sai
+

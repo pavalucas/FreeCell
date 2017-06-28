@@ -106,11 +106,9 @@ typedef struct LIS_tagLista * LIS_tppLista ;
 #ifdef _DEBUG
 
    typedef enum {
-
+         DeturpaTipoCabeca = 0,
          DeturpaPtAntNulo = 1,
-         DeturpaPtProxNulo = 2,
-         DeturpaPtAntLixo = 3,
-         DeturpaPtProxLixo = 4
+         DeturpaPtProxNulo = 2
 
    } LIS_tpModosDeturpacao ;
 
@@ -376,7 +374,7 @@ typedef struct LIS_tagLista * LIS_tppLista ;
 
 #ifdef _DEBUG
 
-   LIS_tpCondRet LIS_VerificarLista( void * pArvoreParm ) ;
+   LIS_tpCondRet LIS_VerificarLista( void * pListaParm ) ;
 
 #endif
 >>>>>>> 0d8d38075b3d9113513bc46b669ddeb5968eeaa8
@@ -446,6 +444,34 @@ typedef struct LIS_tagLista * LIS_tppLista ;
 
 #endif
 >>>>>>> 0d8d38075b3d9113513bc46b669ddeb5968eeaa8
+
+/***********************************************************************
+*
+*  $FC Função: LIS  &Deturpar lista
+*
+*  $ED Descrição da função
+*     Função da interface de teste.
+*     Corrompe elementos específicos da estrutura lista.
+*     Essa função destina-se a preparar os cenários de teste dos
+*     casos de teste utilizados ao testar os verificadores estruturais
+*     da lista.
+*     Esta função não tem proteção contra erros de uso, consequentemente
+*     poderá levar o programa a ser cancelado pelo sistema operacional.
+*
+*  $EP Parâmetros
+*     $P pListaParm  -  lista a ser deturpada
+*     $P ModoDeturpar - identifica como deve ser feita a deturpação
+*                       LIS_tpModosDeturpacao identifica os modos de
+*                       deturpação conhecidos
+*
+***********************************************************************/
+
+#ifdef _DEBUG
+
+   void LIS_Deturpar( void * pListaParm ,
+                      LIS_tpModosDeturpacao ModoDeturpar ) ;
+
+#endif
 
 #undef LISTA_EXT
 

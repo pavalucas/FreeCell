@@ -1,0 +1,17 @@
+Data; Horas Trabalhadas; Tipo Tarefa; Descrição da Tarefa Realizada
+
+04/06/2017; 2 horas; estudar; Estudei o módulo CESPDIN
+11/06/2017; 4 horas; codificar módulo; Alterei o módulo LISTA colocando o CESPDIN
+
+13/06/2017; 2 horas; codificar módulo; Comecei a adicionar as funções de verificação no módulo LISTA
+16/06/2017; 3 horas; codificar módulo; Terminei de adicionar as funções de verificação no módulo LISTA
+
+18/06/2017; 4 horas; redigir script; Redigi o script de controle espaço lista
+
+25/06/2017; 3 horas; projetar; Fiz o modelo físico do projeto
+
+26/06/2017; 2 horas; redigir script; Comecei a redigir o script de deturpar lista
+27/06/2017; 2 horas; redigir script; Terminei de redigir o script de deturpar lista
+
+27/06/2017; 2 horas; revisar script de teste; Revisei os dois scripts que fiz mudando alguns detalhes
+27/06/2017; 2 horas; revisar código do módulo; Ajudando a revisar o partida e modulos do qual dependia

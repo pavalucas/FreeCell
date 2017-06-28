@@ -1,6 +1,6 @@
 // Script:    TesteControleEspacoLista.script
 // Autor:     Lucas Pavanelli
-// Data:      18/jun/2017
+// Data:      26/jun/2017
 // Propósito: Testar controle de memória do módulo lista
 //
 
@@ -11,6 +11,7 @@
 =declararparm   lista0  int 0
 =declararparm   lista1  int 1
 =declararparm   lista2  int 2
+=declararparm   lista3  int 3
 
 =declararparm   str0    string  "abcdefg"
 =declararparm   str1    string  "qwerty"
@@ -23,6 +24,11 @@
 =declararparm   FimLista       int  2
 =declararparm   NaoAchou       int  3
 =declararparm   FaltouMemoria  int  4
+=declararparm   ErroEstrutura  int  5
+
+=declararparm DeturpaTipoCabeca int  0
+=declararparm DeturpaPtAntNulo  int  1
+=declararparm DeturpaPtProxNulo int  2
 
 =declararparm   pNULL          int  0
 =declararparm   pNaoNULL       int  1
@@ -34,15 +40,18 @@
 =obternumeroespacosalocados  0
 
 == Criar uma lista com três elementos
-=criarlista      lista1 
+=criarlista      lista1
 =inselemapos     lista1   str0   OK
 =inselemapos     lista1   str1   OK
 =inselemapos     lista1   str2   OK
 
-== Controlar vazamento de memória
-=exibirtodosespacos            CriterioExibir
-=verificartodosespacos         CriterioExibir
-=obternumeroespacosalocados    7
+== Verificar lista funciona normalmente sem deturpações
+=verificarlista lista1 OK
+
+== Deturpar elemento anterior
+=irfinal lista1
+=deturparlista lista1 DeturpaPtAntNulo
+=verificarlista lista1 ErroEstrutura
 
 == Destruir a lista
 =destruirlista   lista1
@@ -51,31 +60,37 @@
 =obternumeroespacosalocados  0
 =verificartodosespacos       CriterioExibir
 
-== Limitar o numero de espacos
-=limitarmemoriadisponivel 500
-
-== Criar uma lista com quatro elementos
-=criarlista      lista2 
+== Criar uma lista com três elementos
+=criarlista      lista2
 =inselemapos     lista2   str0   OK
 =inselemapos     lista2   str1   OK
 =inselemapos     lista2   str2   OK
-=inselemapos     lista2   str3   OK
 
-
-=verificarcabeca lista2
-=verificarlista lista2 OK
-
-=obternumerototalespacos 16  	// 7 da lista1 destruida + 9 da lista2
-
-== Elimina o limte de espaco
-=eliminarlimitesespaco
+== Deturpar ponteiro para cabeça
+=deturparlista lista2 DeturpaTipoCabeca
+=verificarlista lista2 ErroEstrutura     // nesse caso temos uma falha, 
+										//  pois alteramos o tipo da cabeça
 
 == Destruir a lista
 =destruirlista   lista2
 
-
 == Controlar vazamento de memória
 =obternumeroespacosalocados  0
 =verificartodosespacos       CriterioExibir
+
+== Criar uma lista com três elementos
+=criarlista      lista3
+=inselemapos     lista3   str0   OK
+=inselemapos     lista3   str1   OK
+=inselemapos     lista3   str2   OK
+
+== Deturpar próximo elemento
+=irinicio lista3
+=deturparlista lista3 DeturpaPtProxNulo
+=verificarlista lista3 ErroEstrutura     // nesse caso temos uma falha, 
+										//  pois o ultimo nó da lista não é apontado por pFimLista
+
+== Destruir a lista
+=destruirlista   lista3
 
 // fim

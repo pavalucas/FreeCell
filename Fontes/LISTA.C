@@ -820,6 +820,84 @@
 
 #endif
 
+#ifdef _DEBUG
+
+/***************************************************************************
+*
+*  Função: LIS  &Deturpar lista
+*  ****/
+
+   void LIS_Deturpar( void * pListaParm ,
+                      LIS_tpModosDeturpacao ModoDeturpar )
+   {
+
+      LIS_tpLista * pLista = NULL ;
+
+      if ( pListaParm == NULL )
+      {
+         return ;
+      } /* if */
+
+      pLista = ( LIS_tpLista * )( pListaParm ) ;
+
+      switch ( ModoDeturpar ) {
+
+      /* Modifica o tipo da cabeça */
+
+         case DeturpaTipoCabeca :
+         {
+
+            CED_DefinirTipoEspaco( pLista , CED_ID_TIPO_VALOR_NULO ) ;
+
+            break ;
+
+         } /* fim ativa: Modifica o tipo da cabeça */
+
+      /* Deturpa nó */
+
+         default :
+
+         if ( pLista->pElemCorr != NULL )
+         {
+
+            switch ( ModoDeturpar ) {
+
+            /* Modifica tipo nó corrente */
+
+            /* Anula ponteiro do elemento anterior */
+
+               case DeturpaPtAntNulo :
+               {
+
+                  pLista->pElemCorr->pAnt = NULL ;
+
+                  break ;
+
+               } /* fim ativa: Anula ponteiro do elemento anterior */
+
+            /* Anula ponteiro do elemento posterior  */
+
+               case DeturpaPtProxNulo :
+               {
+
+                  pLista->pElemCorr->pProx = NULL ;
+
+                  break ;
+
+               } /* fim ativa: Anula ponteiro do elemento posterior */
+
+            } /* fim seleciona: Deturpa nó */
+
+            break ;
+
+         } /* fim ativa: Deturpa nó */
+
+      } /* fim seleciona: Raiz de LIS  &Deturpar lista */
+
+   } /* Fim função: LIS  &Deturpar lista */
+
+#endif
+
 
 /*****  Código das funções encapsuladas no módulo  *****/
 

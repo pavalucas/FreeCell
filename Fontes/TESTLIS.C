@@ -50,7 +50,7 @@ static const char AVANCAR_ELEM_CMD        [ ] = "=avancarelem"    ;
 static const char VER_CABECA_CMD          [ ] = "=verificarcabeca" ;
 static const char VER_LISTA_CMD           [ ] = "=verificarlista" ;
 static const char VER_MEMORIA_CMD         [ ] = "=verificarmemoria" ;
-static const char DETURPAR_CMD            [ ] = "=deturpar" ;
+static const char DETURPAR_CMD            [ ] = "=deturparlista" ;
 
 
 #define TRUE  1
@@ -104,7 +104,7 @@ LIS_tppLista   vtListas[ DIM_VT_LISTA ] ;
 *
 *     =verificarmemoria
 *
-*     =deturpar              <inxLista> < idCodigoDeturpa >
+*     =deturparlista              <inxLista> < idCodigoDeturpa >
 *
 ***********************************************************************/
 
@@ -424,6 +424,28 @@ LIS_tppLista   vtListas[ DIM_VT_LISTA ] ;
                              "Retorno incorreto ao verificar lista." ) ;
 
          } /* fim ativa: Testar verificador de lista */
+      #endif
+
+      /* Deturpar uma lista */
+      #ifdef _DEBUG
+
+         else if ( strcmp( ComandoTeste , DETURPAR_CMD ) == 0 )
+         {
+
+            numLidos = LER_LerParametros( "ii" ,
+                               &inxLista , &CondRetEsp ) ;
+
+            if ( ( numLidos != 2 )
+              || !ValidarInxLista( inxLista, NAO_VAZIO ))
+            {
+               return TST_CondRetParm ;
+            } /* if */
+
+            LIS_Deturpar( vtListas[ inxLista ] , CondRetEsp ) ;
+
+            return TST_CondRetOK ;
+
+         } /* fim ativa: Deturpar uma lista */
       #endif
 
       /* Verificar vazamento de memória */
