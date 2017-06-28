@@ -179,6 +179,7 @@ void PAR_Partida(LIS_tppLista listaDeListas)
 	}
 	else if(acao == 5)
 	{
+		LIS_DestruirLista(listaDeListas);
 		exit(1);
 	}
 	else if(acao == 2)
@@ -303,7 +304,8 @@ void PAR_ImprimirPartida(LIS_tppLista listaDeListas)
 	/* Imprimindo as Celulas Extras */
 	LIS_IrInicioLista(listaDeListas);
 
-	printf("Celulas Extras: ");
+
+	printf("\n\nCelulas Extras: ");
 	LIS_AvancarElementoCorrente(listaDeListas, 12);
 	CE_ExibirCelulasExtras((LIS_tppLista) LIS_ObterValor(listaDeListas));
 
