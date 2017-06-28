@@ -1,0 +1,6 @@
+/OUT:..\produto\TesteCV.exe
+/INCREMENTAL:NO
+/MACHINE:IX86
+lista.obj  baralho.obj  colunavisivel.obj  testcv.obj  
+ArcaboucoTeste.lib
+

@@ -1,0 +1,6 @@
+/OUT:..\produto\TesteCB.exe
+/INCREMENTAL:NO
+/MACHINE:IX86
+lista.obj  baralho.obj  celulabase.obj  testcb.obj  
+ArcaboucoTeste.lib
+
