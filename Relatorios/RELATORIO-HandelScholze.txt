@@ -10,5 +10,5 @@
 26/06/2017; 4 hora; codificar módulo; ainda fazendo o modulo partida, erros desconhecidos
 27/06/2017; 3 horas; codificar módulo; consegui algum progresso no partida
 27/06/2017; 1 horas; revisar código do módulo; Vendo erros do partida
-27/06/2017; 2 horas; codificar módulo; ajustando ultimas coisas do módulo partida
-
+27/06/2017; 2 horas; codificar módulo; ajustando últimas coisas do módulo partida
+28/06/2017; 4 horas; codificar módulo; ajustando últimas coisas do módulo partida
